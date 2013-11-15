@@ -13,6 +13,10 @@ window.onload = function(){
     	    
     	    guesses += 1;
     	    
+    	    if (isNaN(number)){
+    	        return [false, "FEL! Du måste mata in ett tal!"];
+    	    }
+    	    
     	    if (number > 100 || number < 1){
     	        return [false, "Talet är utanför intervallet 0 - 100"];
     	    }
