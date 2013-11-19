@@ -2,16 +2,47 @@
 
 window.onload = function(){
 
+
+
+
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
-		// Plats för förändring.		
-		// Returnera den konverterade strängen.
-		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
-	
+	    
+    var convertedtextstring = "";
+    // for-loop som läser igenom varje bokstav i strängen och sparar ner det till den konventerade strängen.
+    for (var i = 0; i < str.length; i += 1) {
+        
+        
+        if (str.length === 0){
+            alert("FEL");
+        }
+    
+        // Om det är a eller A.
+        if (str.charAt(i) == "a" || str.charAt(i) == "A") {
+             convertedtextstring += "#";
+             continue;
+        }
+        
+        // Om det är uppercases.
+        if (str.charAt(i) == str.charAt(i).toUpperCase()){
+            convertedtextstring += str.charAt(i).toLowerCase();
+            continue;
+        }
+        
+        // Om det är lowercases.
+        if (str.charAt(i) == str.charAt(i).toLowerCase()){
+            convertedtextstring += str.charAt(i).toUpperCase();
+            continue;
+        }
 
+    }
+    
 
+    // Returnera den konverterade strängen.
+    return convertedtextstring;
 
-
+	// Vid fel, kasta ett undantag med ett meddelande till användaren. 
+	// if (!isNaN(str * 1)){
 
 
 	};
