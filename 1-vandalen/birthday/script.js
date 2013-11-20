@@ -5,7 +5,8 @@ window.onload = function(){
 	
 	var birthday = function(date){
 	
-	    
+	
+	// Sätter rätt dagensdatum och konventerar födelsedatumet till rätt form.
 	var birthdate = date.split("-");
 	var birthdateconverted = new Date();
 	var todaysdate = new Date();
@@ -14,14 +15,20 @@ window.onload = function(){
 	birthdateconverted.setMonth(birthdate[1]-1);
 	birthdateconverted.setDate(birthdate[2]);
 
-        return (birthdateconverted.getTime()/1000/60/60/24) - (todaysdate.getTime()/1000/60/60/24);
 
+    // Om man inte matat in något i datum-fältet.
+    if (!isNaN(birthdate)){
+	    throw new Error("FEL! Du måste mata in ett datum i fältet.");
+	}
+    
+    // Om man redan fyllt år det här året.
+    if (birthdateconverted.getTime() < todaysdate.getTime()){
+        birthdateconverted.setFullYear(todaysdate.getFullYear()+1);
+    }
+    
+    // Returnerar dagarna till nästa födelsedag.
+    return Math.round((birthdateconverted.getTime()/1000/60/60/24) - (todaysdate.getTime()/1000/60/60/24));
 
-
-
-
-    console.log(birthdateconverted.getTime());
-    console.log(todaysdate.getTime());
 
 
 
