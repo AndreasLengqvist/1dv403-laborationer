@@ -4,17 +4,25 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-	var todaydate = new Date();
 	
-    console.log(todaydate);
-    console.log(date);
+	    
+	var birthdate = date.split("-");
+	var birthdateconverted = new Date();
+	var todaysdate = new Date();
+	
+	birthdateconverted.setFullYear(birthdate[0]);
+	birthdateconverted.setMonth(birthdate[1]-1);
+	birthdateconverted.setDate(birthdate[2]);
+
+        return (birthdateconverted.getTime()/1000/60/60/24) - (todaysdate.getTime()/1000/60/60/24);
 
 
-    if (todaydate < date){
-        alert("FELIGT");
-    }
 
-			// Din kod här.
+
+
+    console.log(birthdateconverted.getTime());
+    console.log(todaysdate.getTime());
+
 
 
 

@@ -12,7 +12,7 @@ window.onload = function(){
     
     // Om textfältet är tomt.
         if (str.length === 0){
-            alert("FEL");
+            throw new Error("FEL. Du måste mata in något i textfältet.");
         }
     
     // for-loop som läser igenom varje bokstav i strängen och sparar ner det till den konventerade strängen.
