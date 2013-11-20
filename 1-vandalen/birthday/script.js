@@ -4,8 +4,15 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-		
+	var todaydate = new Date();
+	
+    console.log(todaydate);
+    console.log(date);
 
+
+    if (todaydate < date){
+        alert("FELIGT");
+    }
 
 			// Din kod här.
 

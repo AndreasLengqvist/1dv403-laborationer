@@ -9,13 +9,14 @@ window.onload = function(){
 	var convertString = function(str){
 	    
     var convertedtextstring = "";
-    // for-loop som läser igenom varje bokstav i strängen och sparar ner det till den konventerade strängen.
-    for (var i = 0; i < str.length; i += 1) {
-        
-        
+    
         if (str.length === 0){
             alert("FEL");
         }
+    
+    
+    // for-loop som läser igenom varje bokstav i strängen och sparar ner det till den konventerade strängen.
+    for (var i = 0; i < str.length; i += 1) {
     
         // Om det är a eller A.
         if (str.charAt(i) == "a" || str.charAt(i) == "A") {
