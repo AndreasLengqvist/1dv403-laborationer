@@ -10,10 +10,10 @@ window.onload = function(){
 	    
     var convertedtextstring = "";
     
+    // Om textfältet är tomt.
         if (str.length === 0){
             alert("FEL");
         }
-    
     
     // for-loop som läser igenom varje bokstav i strängen och sparar ner det till den konventerade strängen.
     for (var i = 0; i < str.length; i += 1) {
