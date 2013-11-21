@@ -26,11 +26,12 @@ window.onload = function(){
     		}
     		
     	    if (number < secret){
-    	        return [false, "Det hemliga talet är lägre!"];
+    	        return [false, "Det hemliga talet är högre!"];
     	    }
     	    
     	    if (number > secret){
-    	        return [false, "Det hemliga talet är högre!"];
+    	        
+    	        return [false, "Det hemliga talet är lägre!"];
     	    }
 
 	};
