@@ -2,9 +2,12 @@
 
     var MessageBoard = {
 
-        init:function () {
-            alert("Test!")
-        
+
+        init:function (Message) {
+            
+            var mess = new Message("Testmeddelande", new Date());
+            alert(mess);
+            
         }
 };
 
