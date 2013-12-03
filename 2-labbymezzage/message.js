@@ -29,7 +29,7 @@ function Message(message, date){
 
 // toString-metod. En strängpresentation av objektet.
 Message.prototype.toString = function() {
-    return this.getText()+"("this.getDate()+")";
+    return this.getText()+" ("+this.getDate()+")";
 }
 
 // Hämtar texten med \n utbytt mot <br/>.

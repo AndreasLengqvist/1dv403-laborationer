@@ -3,7 +3,17 @@
     var MessageBoard = {
 
 
-        init:function (Message) {
+        message: [],
+
+        init:function () {
+            
+            
+            
+            var sendmessage = document.getElementById("send");
+            sendmessage.onclick = MessageBoard.addMessage;
+            
+            
+            
             
             var mess = new Message("Testmeddelande", new Date());
             alert(mess);

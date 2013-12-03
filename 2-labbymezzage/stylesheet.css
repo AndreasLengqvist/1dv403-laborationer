@@ -1,0 +1,27 @@
+body {
+    background:#F4F7D7;
+    text-align:center;   
+}
+
+h1 {
+    font-family:helvetica;
+    font-weight:lighter;
+}
+
+#messageslist {
+    margin:10px;
+}
+
+textarea {
+    max-width:100%;
+    border-radius:20px;
+    border-color:gray;
+    
+}
+
+input {
+    width:100px;
+    height:25px;
+    margin-left:500px;
+    font-size:1.0em;
+}
