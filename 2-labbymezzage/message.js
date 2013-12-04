@@ -34,7 +34,7 @@ Message.prototype.toString = function() {
 
 // Hämtar texten med \n utbytt mot <br/>.
 Message.prototype.getHTMLText = function() {
-    
+    	return this.getText().replace(/[\n]/g, "<br />");
 }
 
 
