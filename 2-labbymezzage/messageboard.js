@@ -6,17 +6,24 @@
         messages: [],
 
         init:function () {
-            
+                        
+                
             // Anropar addMessage när Skicka-knappen trycks ner.
             var sendbutton = document.querySelector("#send");
             sendbutton.onclick = MessageBoard.addMessage;
             
-            // Anropar och kopierar texten som stod i textarea när Skicka-knappen trycktes ner.
-            var textmessage = document.querySelector("#messagebox");
+            // Anropar och kopierar texten som stod i textarea om användaren tryckter ner Enter (Enter+shift ger fortfarande radbrytning).
+            var sendenter = document.querySelector("#messagebox");
+            sendenter.onkeypress = function(e){
+                if (!e) {
+                    e = window.event;
+                }
             
-            
-            ld.onkeypress = function(e){
-                if(!e) var e = window.event;
+            if (e.keyCode == 13 &! e.shiftKey) {
+                MessageBoard.addMessage();
+                //Lägger till false för att inte skicka med en tom rad
+                return false;
+                }
             }
         },
         
@@ -26,7 +33,11 @@
 		var newMessage = new Message(document.form.messagebox.value, newDate);
 		MessageBoard.messages.push(newMessage);
 		MessageBoard.renderMessages();
-	},
+        },
+
+        getInfo: function(messageID){
+            alert(MessageBoard.messages[messageID].getFullDate());
+        },
 	
         removeMessage: function(messageID){
 		var answer = confirm("Är du säker på att du vill radera det här meddelandet?");
@@ -66,13 +77,13 @@
             infobutton.className = "infothis";
             infobutton.title = "Visa info om det här meddelandet";
             
-            // Clearar så att varje wapper blir korrakt utskriven.
+            // Clearar så att varje wapper blir korrekt utskriven.
             var clearing = wrapper.appendChild(document.createElement("div"));
             clearing.className = "clearing";
 
             // Info-knappen.
             infobutton.onclick = function() {
-                MessageBoard.theDateText(messageID);
+                MessageBoard.getInfo(messageID);
             };
             
             // Tabort-knappen.

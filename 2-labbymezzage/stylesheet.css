@@ -8,17 +8,15 @@ h1 {
     font-weight:lighter;
 }
 
-#messageslist {
-    max-width:100%;
-    margin:10px;
-}
-
 
 textarea {
+    padding:15px;
     resize:none;
     max-width:100%;
     border-radius:20px;
     border-color:gray;
+    box-shadow: inset 0px 0px 7px 1px;
+
     
 }
 
@@ -34,11 +32,13 @@ p {
 }
 
 .textfield {
+    font-family:courier;
     float:left;
     width:75%;
 }
 
 .created {
+    font-family:courier;
     font-size:0.8em;
 }
 
@@ -69,10 +69,16 @@ p {
     border-radius:20px;
     margin-bottom:5px;
     text-align:left;
+    box-shadow: inset 0px 0px 7px 1px;
 }
 
 .clearing {
     clear:both;
+}
+
+#messagecounter {
+    font-family:courier;
+    margin:5px;
 }
 
 main {
