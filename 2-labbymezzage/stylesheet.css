@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-    font-family:helvetica;
+    font-family:courier;
     font-weight:lighter;
 }
 
@@ -23,6 +23,7 @@ textarea {
 }
 
 button {
+    font-family:courier;
     width:100px;
     height:25px;
     font-size:1.0em;

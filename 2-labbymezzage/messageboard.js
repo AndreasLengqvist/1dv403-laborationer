@@ -5,11 +5,11 @@
 
         messages: [],
 
-        // Objektfunktionen init initierar och anropar addMessage när sendbutton trycks ner.
         init:function () {
+            // Anropar addMessage när Skicka-knappen trycks ner.
             var sendbutton = document.querySelector("#send");
             sendbutton.onclick = MessageBoard.addMessage;
-            // Anropar och kopierar texten som stod i textarea när sendbutton trycktes ner.
+            // Anropar och kopierar texten som stod i textarea när Skicka-knappen trycktes ner.
             var textmessage = document.querySelector("#messagebox");
         },
         
