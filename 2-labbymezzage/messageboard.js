@@ -13,6 +13,11 @@
             
             // Anropar och kopierar texten som stod i textarea när Skicka-knappen trycktes ner.
             var textmessage = document.querySelector("#messagebox");
+            
+            
+            ld.onkeypress = function(e){
+                if(!e) var e = window.event;
+            }
         },
         
         // Objektfunktionen addMessage lägger till meddelandet och datumet då det skrevs och pushar det sedan till arrayen messages.
@@ -60,11 +65,15 @@
             infobutton.type = "button";
             infobutton.className = "infothis";
             infobutton.title = "Visa info om det här meddelandet";
+            
+            // Clearar så att varje wapper blir korrakt utskriven.
+            var clearing = wrapper.appendChild(document.createElement("div"));
+            clearing.className = "clearing";
 
             // Info-knappen.
             infobutton.onclick = function() {
                 MessageBoard.theDateText(messageID);
-            }
+            };
             
             // Tabort-knappen.
             deletebutton.onclick = function() {
