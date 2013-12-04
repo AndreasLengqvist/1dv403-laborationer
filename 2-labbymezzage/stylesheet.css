@@ -28,3 +28,12 @@ input {
     height:25px;
     font-size:1.0em;
 }
+
+p {
+    display:inline;
+    margin-left:5px;
+}
+
+.created {
+    margin-right:20px;
+}
