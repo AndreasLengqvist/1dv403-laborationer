@@ -22,20 +22,55 @@
 		MessageBoard.messages.push(newMessage);
 		MessageBoard.renderMessages();
 	},
+	
+        removeMessage: function(messageID){
+		var answer = confirm("Är du säker på att du vill radera det här meddelandet?");
+		if (answer) {
+            // Tar bort meddelandet och uppdaterar renderMessages.
+            MessageBoard.messages.splice(messageID, 1);
+            MessageBoard.renderMessages(); 
+		}
+        },
     
         renderMessage: function(messageID){
             
-            // Renderar och skriver ut ett meddelande i från arrayen.
-            var div = document.querySelector("#messageslist")
-            var text = document.createElement("p");
-            text.className = "created";
-            text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
-            div.appendChild(text);
+            // Skriver ut en div-tagg för att kapsla in hela meddelandefältet.
+            var wrapper = document.querySelector("#messageslist").appendChild(document.createElement("div"));
+            wrapper.className = "wrapper";
             
-            // Renderar och skriver ut ett datum i från arrayen då meddelandet skapades.
-            var time = document.createElement("p");
+            // Skriver ut meddelandet i en P-tagg.
+            var div = wrapper.querySelector("#messageslist");
+            var text = wrapper.appendChild(document.createElement("p"));
+            text.className = "textfield";
+            text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
+            
+            // Skriver ut ett datum i från arrayen då meddelandet skapades i en P-tagg.
+            var time = wrapper.appendChild(document.createElement("p"));
+            time.className = "created";
             time.innerHTML ="Skapades klockan: "+MessageBoard.messages[messageID].getDateText();
-            div.appendChild(time);
+            
+            // Lägger till en tabort-knapp till meddelandet.
+            var deletebutton = wrapper.appendChild(document.createElement("input"));
+            deletebutton.type = "button";
+            deletebutton.className = "deletethis";
+            deletebutton.title = "Ta bort det här meddelandet";
+            
+            // Lägger till en info-knapp till meddelandet med tidsstämpelsfunktion.
+            var infobutton = wrapper.appendChild(document.createElement("input"));
+            infobutton.type = "button";
+            infobutton.className = "infothis";
+            infobutton.title = "Info om det här meddelandet";
+
+            // Info-knappen.
+            infobutton.onclick = function() {
+                MessageBoard.theDateText(messageID);
+            }
+            
+            // Tabort-knappen.
+            deletebutton.onclick = function() {
+               MessageBoard.removeMessage(messageID);
+            };
+	
         },
         
         renderMessages: function(){
@@ -60,7 +95,7 @@
                 messageCounter.id= 'messagecounter';
                 messageCounter.innerHTML = "Antal meddelanden skapade: "+MessageBoard.messages.length;
         }
-	
+
 };
 
     // MessageBoard.init anropas när sidan är helt färdigladdad.

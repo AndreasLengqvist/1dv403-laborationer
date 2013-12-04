@@ -1,6 +1,6 @@
 body {
     background:#F4F7D7;
-    text-align:center;   
+    text-align:center;
 }
 
 h1 {
@@ -31,9 +31,44 @@ input {
 
 p {
     display:inline;
-    margin-left:5px;
 }
 
 .created {
-    margin-right:20px;
+    font-size:0.8em;
+    float:right;
+    margin-left:250px;
+}
+
+.deletethis {
+    float:right;
+    border-color:#B40404;
+    background:#B40404;
+    border-radius:20px;
+    width:9px;
+    height:15px;
+    margin-left:10px;
+    text-align:center;
+}
+
+.infothis {
+    float:right;
+    border-color:#FFD700;
+    background:#FFD700;
+    border-radius:20px;
+    width:9px;
+    height:15px;
+    margin-left:5px;
+    text-align:center;
+}
+
+.wrapper {
+    padding:20px;
+    background:white;
+    border-radius:20px;
+    margin-bottom:5px;
+}
+
+main {
+    max-width:50%;
+    margin:0 auto;
 }
