@@ -18,8 +18,28 @@
 		var newDate = new Date();
 		var newMessage = new Message(document.form.messagebox.value, newDate);
 		MessageBoard.messages.push(newMessage);
-        alert(MessageBoard.messages);
-	}
+		MessageBoard.renderMessages();
+	},
+	
+	    renderMessages: function(){
+            // Raderar alla meddelanden i arrayen.
+            document.querySelector("#messagebox").innerHTML ="";
+            // Rensar textfältet.
+            document.form.messagebox.value="";
+            // Renderar och skriver ut alla meddelanden i arrayen.
+            for (var i=0; i < MessageBoard.messages.length; i =+ 1){
+                MessageBoard.renderMessage(i);
+            }
+        },
+        
+        
+        renderMessage: function(messageID){
+            var div = document.querySelector("#messageslist")
+            var text = document.createElement("p");
+            text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
+            div.appendChild(text);
+        }
+	
 };
 
     // MessageBoard.init anropas när sidan är helt färdigladdad.
