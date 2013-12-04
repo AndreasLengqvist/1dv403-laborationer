@@ -41,24 +41,23 @@ p {
 
 .deletethis {
     float:right;
+    left:1000px;
     border-color:#B40404;
     background:#B40404;
     border-radius:20px;
     width:9px;
     height:15px;
-    margin-left:10px;
-    text-align:center;
 }
 
 .infothis {
     float:right;
+    left:1000px;
     border-color:#FFD700;
     background:#FFD700;
     border-radius:20px;
     width:9px;
     height:15px;
-    margin-left:5px;
-    text-align:center;
+    margin-right:5px;
 }
 
 .wrapper {
@@ -66,6 +65,7 @@ p {
     background:white;
     border-radius:20px;
     margin-bottom:5px;
+    text-align:left;
 }
 
 main {

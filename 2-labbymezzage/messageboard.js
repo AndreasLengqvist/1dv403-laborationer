@@ -59,7 +59,7 @@
             var infobutton = wrapper.appendChild(document.createElement("input"));
             infobutton.type = "button";
             infobutton.className = "infothis";
-            infobutton.title = "Info om det här meddelandet";
+            infobutton.title = "Visa info om det här meddelandet";
 
             // Info-knappen.
             infobutton.onclick = function() {
