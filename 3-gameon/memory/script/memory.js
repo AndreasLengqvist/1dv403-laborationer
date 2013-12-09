@@ -34,7 +34,7 @@
                     tr.appendChild(td);
                     
                     var pic = document.createElement("img");
-                    pic.setAttribute("src", "/../pics/0.png");
+                    pic.setAttribute("src", "pics/0.png");
                     td.appendChild(pic);
                 }
             
