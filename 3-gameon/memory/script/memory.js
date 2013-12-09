@@ -12,12 +12,14 @@
         },
         
         createTable: function() {
-            var wrapper = document.querySelector("#memorygame");
+            var wrapper = document.querySelector("#main");
             var div = document.createElement("div");
-            wrapper.className = "wrapper";
             wrapper.appendChild(div);
+            div.className = "memgame";
+
 
             // Skapar en tabell.
+            document.querySelector(".memgame");
             var table = document.createElement("table");
             table.className = "memtable";
             div.appendChild(table);
@@ -32,9 +34,8 @@
                     tr.appendChild(td);
                     
                     var pic = document.createElement("img");
-                    pic.setAttribute("src", "../pics/0.png");
+                    pic.setAttribute("src", "/../pics/0.png");
                     td.appendChild(pic);
-                    console.log(pic);
                 }
             
             }
