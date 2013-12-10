@@ -1,0 +1,20 @@
+body {
+    background:#F4F7D7;
+    text-align:center;
+}
+
+h1 {
+    font-family:courier;
+    font-weight:lighter;
+}
+
+.memtable {
+    margin:auto;
+    width:200px;
+    height:200px;
+    border:1px ridge black;
+    border-radius:20px;
+    background:white;
+    box-shadow:1px 1px 1px 2px;
+}
+
