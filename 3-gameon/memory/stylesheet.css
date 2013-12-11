@@ -18,3 +18,18 @@ h1 {
     box-shadow:1px 1px 1px 2px;
 }
 
+.winner {
+    font-style:courier;
+    font-size:1.5em;
+    color:#339933;
+    font-weight:bolder;
+}
+
+.counter {
+        font-style:courier;
+    font-size:1.2em;
+    color:black;
+    font-weight:bolder;
+}
+
+
