@@ -8,7 +8,7 @@ h1 {
     font-weight:lighter;
 }
 
-.memtable {
+.memgame {
     margin:auto;
     width:200px;
     height:200px;
@@ -19,14 +19,14 @@ h1 {
 }
 
 .winner {
-    font-style:courier;
+    font-family:courier;
     font-size:1.5em;
     color:#339933;
     font-weight:bolder;
 }
 
-.counter {
-        font-style:courier;
+#counter {
+    font-family:courier;
     font-size:1.2em;
     color:black;
     font-weight:bolder;
