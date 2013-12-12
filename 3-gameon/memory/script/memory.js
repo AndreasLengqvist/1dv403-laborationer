@@ -3,17 +3,12 @@
     var Memory = {
         
         guesscount: 0,      // Räknare som håller koll på antalet rätt och när spelet är slut.
-        lastGuess: -1,       // Numret på senaste gissningen.
         picArray: [],       // Array som sparar ner 2 bilder/nummer och jämför dem.
         memoryArray: [],    // memory array som visar de framslumpade numren.
-        rows: 4,            // Sätter antalet rader i memoryspelet.
-        cols: 4,            // Sätter antalet kolumner i memoryspelet.
-        clickCounter: 0,    // Räknare som håller koll på antalet klick.
 
 
         init:function () {
-            var memory1 = new RandomGenerator.getPictureArray(Memory.rows, Memory.cols);
-            Memory.memoryArray = memory1;
+            Memory.memoryArray = RandomGenerator.getPictureArray(4, 4);
             
             Memory.createTable();
         },
@@ -21,52 +16,38 @@
         
         // Skapar en wrapper för att kapsla in memoryspelet.
         createTable: function() {
-            var wrapper = document.querySelector("#main");
-            var div = document.createElement("div");
-            div.className = "memgame";
-            wrapper.appendChild(div);
-
-
-            // Skapar en tabell.
-            document.querySelector(".memgame");
-            var table = document.createElement("table");
-            table.className = "memtable";
-            div.appendChild(table);
-
-            var MemoryID = 0;
-            
-
-            // Skapar tabelceller som fungerar som memorybrickor med en bild i varje cell.
-            for (var r = 0; r < Memory.rows; r += 1) {
-                var tr = document.createElement("tr");
-                table.appendChild(tr);
+                var main = document.getElementById("main");   
+                var table = document.createElement("table");        //Skapar en tabell
+                table.className = "memtable"
+                main.appendChild(table);                            //Lägger tabellen i theGame
+                var MessageID = 0;
                 
-                for (var c = 0; c < Memory.cols; c += 1) {
-                    tr.appendChild(Memory.createMemorybrick(MemoryID));
-                    MemoryID += 1;
+
+            for (var c = 0; c < Memory.memoryArray.length/c; c+=1) {              //For loop som skapar raderna
+                var trTag = document.createElement("tr");       //Skapar tr taggar
+                trTag.className = "tr";                         //Ger tr taggarna ett klassnamn
+                table.appendChild(trTag);                       //Lägger in tr taggarna i tabellen
+                
+                for(var r = 0; r < Memory.memoryArray.length/r; r+=1){            //Forloop som skapar kolumnerna
+                    var tdTag = document.createElement("td");   //Skapar td taggar
+                    tdTag.className = "td";                     //Ger td taggarna ett klassnamn
+                    trTag.appendChild(tdTag);                   //Lägger in td taggarna i tr taggarna
+                    
+                var pic = document.createElement("img");      //Skapar en img tagg
+                    pic.setAttribute("src", "pics/0.png");    //Länkar in en bild i img taggen
+    				pic.className = "image";                  //Ger img taggen ett klassnamn
+    				
+    			var link = document.createElement("a");         //Skapar en a tagg
+                    link.setAttribute("href", "#");             //Gör a taggen till en länk
+                    
+                    tdTag.appendChild(link);                    //Lägger a taggen i td taggen
+                    link.appendChild(pic);                    //Lägger bilden i a taggen som gör bilden till en länk
+                    Memory.memoryClick(link, pic, MessageID);//Ropar på metoden turnImages som ska vända bilderna när man klickar på dom
+                    
+                    MessageID += 1;                             //Plussar på i så att alla bilder kommer att finnas med istället för att alla brickor innehåller samma
                 }
-            }
-        },
+        }
         
-        
-        // Skapar och bygger upp varje unik cell. Anropas från for-loopen som skapar td-cellen.
-        createMemorybrick: function(MemoryID) {
-                    var td = document.createElement("td");
-                    var link = document.createElement("a");
-                    var pic = document.createElement("img");
-                    
-                    link.setAttribute("href", "#");
-                    pic.setAttribute("src", "pics/0.png");
-                    pic.setAttribute("id", MemoryID);
-                    
-                    // onclick-funktion som anropar memoryClick som visar den unika bilden.
-                    link.onclick = function() {
-                        Memory.memoryClick(link, pic, MemoryID);
-                    };
-                    
-                    link.appendChild(pic);
-                    td.appendChild(link);
-                    return td;
         },
         
         
@@ -101,7 +82,7 @@
         comparePics: function() {
             
             // Om den första klickta bilden är likadan som den nya klickta bilden. Plussa räknaren med ett och nollställ jämförelse-arrayen.
-            if(Memory.picArray[0].getElementsByTagName("img")[0].getAttribute("src") === Memory.picArray[1].getElementsByTagName("img")[0].getAttribute("src"));
+            if(Memory.picArray[0].getElementsByTagName("img")[0].getAttribute("src") === Memory.picArray[1].getElementsByTagName("img")[0].getAttribute("src")){
                 Memory.guesscount += 1;
                 Memory.picArray = [];
                 
@@ -116,10 +97,11 @@
             
             // Nollställer de jämnförda bilderna till frågetecken-bilden igen och nollställer jämförelse-arrayen.
             else {
-                Memory.picArray[0].getElementsByTagName("img")[0].setAttribute("src", "pics/0.png");
+                Memory.picArray[0].getElementsByTagName("img")[0].setAttribute("src", "pics/0.png");  
                 Memory.picArray[1].getElementsByTagName("img")[0].setAttribute("src", "pics/0.png");
                 Memory.picArray = [];
             }
+        }
     }
 
 };
