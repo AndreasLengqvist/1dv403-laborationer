@@ -8,6 +8,7 @@
         memoryArray: [],    // memory array som visar de framslumpade numren.
         rows: 4,            // Sätter antalet rader i memoryspelet.
         cols: 4,            // Sätter antalet kolumner i memoryspelet.
+        clickCounter: 0,    // Räknare som håller koll på antalet klick.
 
 
         init:function () {
@@ -32,8 +33,8 @@
             table.className = "memtable";
             div.appendChild(table);
 
-
             var MemoryID = 0;
+            
 
             // Skapar tabelceller som fungerar som memorybrickor med en bild i varje cell.
             for (var r = 0; r < Memory.rows; r += 1) {
@@ -60,7 +61,7 @@
                     
                     // onclick-funktion som anropar memoryClick som visar den unika bilden.
                     link.onclick = function() {
-                        Memory.memoryClick(MemoryID);
+                        Memory.memoryClick(link, pic, MemoryID);
                     };
                     
                     link.appendChild(pic);
@@ -71,70 +72,56 @@
         
         // Funktionen som anropas när användaren klickar på en bild. Timer som visar de två unika bilderna användaren klickat på i 1 sekund för att sedan vända dem igen.
         // Klickar man fram samma bilder så vänds båda upp och räknaren ökas med 1 rätt.
-        memoryClick: function (MemoryID) {
-        var mempic = document.getElementById(MemoryID);
-        var lastpic = document.getElementById(Memory.lastGuess);
-        mempic.setAttribute("src", "pics/"+this.memoryArray[MemoryID]+".png");
+        memoryClick: function (link, pic, MemoryID) {
 
-            console.log("Guesses:"+Memory.guesscount);
-
-            
-            
-            // Om räknaren går upp till samma som spelets brickor är spelet slut och man har vunnit.
-           if(Memory.guesscount == (Memory.memoryArray.length/2)){
-                console.log("DU VANN!");
-                var div = document.querySelector(".memgame");
-                var winner = document.createElement("p");
-                winner.className = "winner";
-                winner.innerHTML = "Du vann!";
-                div.appendChild(winner);
-            }
-
-            // Om sista gissningen är högre än 1 (alltså om en gissning är gjord).
-            if(this.memoryArray[Memory.lastGuess] > 0){
+            // Om bilden är ett frågetecken.
+            if(pic.getAttribute("src") === "pics/0.png") {
                 
-                // Om gissningen är fel.
-                if(this.memoryArray[Memory.lastGuess] != Memory.memoryArray[MemoryID]){
-                    console.log("Fel gissat!");
-                        
-                        // Timer som resettar bilderna när de är fel.
-                        setTimeout(function() {
-                        mempic.setAttribute("src", "pics/0.png");
-                        lastpic.setAttribute("src", "pics/0.png");
-                        }, 1000);
+                // Lägger till den tryckta a-taggen till en jämförelse-array.
+                Memory.picArray.push(link);
+                
+                // Om jamförelse-arrayen är mindre än 3. Sätt den klickta bilden till dess hemliga värde.
+                if(Memory.picArray.length === 1 || Memory.picArray.length === 2) {
+                    pic.setAttribute("src", "pics/"+Memory.memoryArray[MemoryID]+".png");
+                }
+                
+                // Om jämförelse-arrayen är 2. Anropar comparePics och sätter en timer på 1 sekund.
+                if(Memory.picArray.length === 2){
                     
+                    // Timer som resettar bilderna när de är fel.
+                    setTimeout(function() {
+                    Memory.comparePics();
+                    }, 1000);
                 }
-                
-                // Om gissningen är rätt.
-                if(this.memoryArray[Memory.lastGuess] == Memory.memoryArray[MemoryID]){
-                    console.log("Rätt gissat!");
-                    Memory.guesscount += 1;
-                }
-                
-                Memory.lastGuess = -1;
             }
+        
+        },
+    
+        // Funktion som jämför de klickta bilderna.
+        comparePics: function() {
             
+            // Om den första klickta bilden är likadan som den nya klickta bilden. Plussa räknaren med ett och nollställ jämförelse-arrayen.
+            if(Memory.picArray[0].getElementsByTagName("img")[0].getAttribute("src") === Memory.picArray[1].getElementsByTagName("img")[0].getAttribute("src"));
+                Memory.guesscount += 1;
+                Memory.picArray = [];
+                
+                if(Memory.guesscount === Memory.memoryArray.length/2) {
+                    console.log("DU VANN!");
+                    var div = document.querySelector(".memgame");
+                    var winner = document.createElement("p");
+                    winner.className = "winner";
+                    winner.innerHTML = "Du vann!";
+                    div.appendChild(winner);
+                }
+            
+            // Nollställer de jämnförda bilderna till frågetecken-bilden igen och nollställer jämförelse-arrayen.
             else {
-            Memory.lastGuess = MemoryID;
+                Memory.picArray[0].getElementsByTagName("img")[0].setAttribute("src", "pics/0.png");
+                Memory.picArray[1].getElementsByTagName("img")[0].setAttribute("src", "pics/0.png");
+                Memory.picArray = [];
             }
-            
-        // Om räknaren går upp till samma som spelets brickor är spelet slut och man har vunnit.
-           if(Memory.guesscount == (Memory.memoryArray.length/2)){
-                console.log("DU VANN!");
-                var div = document.querySelector(".memgame");
-                var winner = document.createElement("p");
-                winner.className = "winner";
-                winner.innerHTML = "Du vann!";
-                div.appendChild(winner);
-            }
-            
-            // Skapar en räknare som håller koll på hur man rätt man har.
-            if (Memory.guesscount > 0){
-                document.querySelector(".counter").innerHTML = +Memory.guesscount;
-            }
-            
-        }
- 
+    }
+
 };
 
     // MessageBoard.init anropas när sidan är helt färdigladdad.
