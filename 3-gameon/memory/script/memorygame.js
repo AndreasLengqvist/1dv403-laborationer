@@ -42,7 +42,7 @@ var Memory = {
             table.appendChild(tr);
             
             // Nästlad for-loop som skapar varje td genom att anropa createCell.
-            // Ett unikt cellID tilldelas varje td.
+            // Ett unikt cellID tilldelas varje td. I slutet anropas även playMemory.
             for (var r = 0; r < Memory.rows; r += 1) {
                 
                 var td = document.createElement("td");
@@ -55,8 +55,7 @@ var Memory = {
                 anchor.appendChild(img);
                 td.appendChild(anchor);
                 tr.appendChild(td);
-                console.log(cellID)
-                
+
                 Memory.playMemory(anchor, img, cellID);
                 
                 cellID += 1;
@@ -73,12 +72,8 @@ var Memory = {
         
         // Gissningsfunktion (anonymfunktion) som anropas då man trycker på ett frågetecken.
         anchor.onclick = function() {
-                    
-        // Räknare som håller koll på antalet gissningar.
-            Memory.guesscounter += 1;
-
-
-        
+                
+                
             // Om den tryckta bilden är ett frågetecken. Fortsätt..
             if(img.getAttribute("src") === "pics/0.png"){
                 
@@ -106,6 +101,9 @@ var Memory = {
     // Jämförelsefunktion som genom olika if-satser bestämmer vad som skall göras.
     compareBricks: function() {
         
+        // Räknare som håller koll på antalet gissningar.
+            Memory.guesscounter += 1;
+        
         // Om compareArrayens första index och andra index är lika. Fortsätt..
         if(Memory.compareArray[0].getElementsByTagName("img")[0].getAttribute("src") === Memory.compareArray[1].getElementsByTagName("img")[0].getAttribute("src")){
             
@@ -114,7 +112,7 @@ var Memory = {
             
             // Skapar en räknare som håller reda på antalet rätta rader.
             var pairs = document.getElementById("counter");
-            pairs.innerHTML = "Antal rätta rader: "+Memory.paircounter;
+            pairs.innerHTML = "Antal rätta par: "+Memory.paircounter;
             
             // Nollställer compareArrayen.
             Memory.compareArray = [];
