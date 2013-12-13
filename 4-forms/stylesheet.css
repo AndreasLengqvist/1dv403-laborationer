@@ -1,0 +1,42 @@
+body {
+    background:#F4F7D7;
+    text-align:center;
+}
+
+h1 {
+    font-family:courier;
+    font-weight:lighter;
+}
+
+form {
+    font-family:courier;
+    margin:auto;
+    width:500px;
+    text-align:left;
+}
+
+label {
+    font-family:courier;
+}
+
+
+input {
+    border-radius:5px;
+    display:block;
+    margin-top:5px;
+    padding:5px;
+}
+
+select {
+    border-radius:5px;
+    display:block;
+    margin-top:5px;
+    margin-bottom:60px;
+    padding:5px;
+}
+
+#send {
+    font-family:courier;
+    font-size:1.0em;
+    background:#AEB191;
+}
