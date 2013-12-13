@@ -18,7 +18,7 @@ h1 {
     box-shadow:1px 1px 1px 2px;
 }
 
-.winner {
+#winner {
     font-family:courier;
     font-size:1.5em;
     color:#339933;
@@ -32,4 +32,18 @@ h1 {
     font-weight:bolder;
 }
 
+form {
+    font-family:courier;
+}
+
+input {
+    border-radius:5px;
+}
+
+#send {
+    font-family:courier;
+    font-size:1.0em;
+    background:#AEB191;
+
+}
 

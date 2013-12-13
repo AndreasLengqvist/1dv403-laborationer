@@ -8,24 +8,48 @@ var Memory = {
     compareArray: [],       // Array som sparar ner och jämför de två gissade brickorna.
     paircounter: 0,         // Räknare som har hand om antalet rätta par.
     guesscounter: 0,        // Räknare som har hand om antalet gjorda gissningar.
-    rows: 4,                // Inskrivning av antalet rader i spelet.
-    cols: 2,                // Inskrivning av antalet kolumner i spelet.
+    rows: 0,                // Inskrivning av antalet rader i spelet.
+    cols: 0,                // Inskrivning av antalet kolumner i spelet.
     
     
-    // Initieringsfunktion som skapar spelet när sidan laddats klart.
+    // Initieringsfunktion som skapar ett formulär för att bygga upp memoryspelet.
     init: function() {
         
-        document.createElement("input");
         
+        document.querySelector("h1").innerHTML = "Game OFF!";
         
-        Memory.memoryArray = new RandomGenerator.getPictureArray(Memory.cols, Memory.rows);
+        var sendbutton = document.querySelector("#send");
+            sendbutton.onclick = function(cols, rows) {
+
+                Memory.cols = document.getElementById('cols').value;
+                Memory.rows = document.getElementById('rows').value;
+                
+                var c = Memory.cols;
+                var r = Memory.rows;
+                
+                Memory.buildGame(c, r);
+            }
+    },
+    
+    
+    buildGame: function(c, r) {
         
-        Memory.createMemGame();
+        // Gömmer formuläret och spelet körs igång.
+        document.querySelector("form").style.display = "none";
+        document.querySelector("h1").innerHTML = "Game ON!";
         
+        Memory.memoryArray = new RandomGenerator.getPictureArray(c, r);
+        Memory.createMemGame();    
     },
     
     // Createfunktion som skapar själva spelbrädet.
     createMemGame: function() {
+        
+        // Skapar en p-tag som låtsas vara räknare.
+        var counter = document.createElement("p");
+        counter.id = "counter";
+        counter.innerHTML = "Antal rätta par: 0"
+        document.querySelector("main").appendChild(counter);
         
         // Skapar tabellen som memoryspelet kommer ligga i.
         var wrapper = document.getElementById("main");
@@ -95,6 +119,8 @@ var Memory = {
                     }, 1000);
                 }
             }
+            
+            return false;
         }
     },
     
@@ -118,11 +144,16 @@ var Memory = {
             Memory.compareArray = [];
             
             if(Memory.paircounter === Memory.memoryArray.length/2){
-                var table = document.getElementById("main");
-                var winner = document.createElement("p");
-                winner.className = "winner";
-                winner.innerHTML = "Grattis, du vann och klarade det på " +Memory.guesscounter+ " försök!";
-                table.appendChild(winner);
+                    var table = document.getElementById("main");
+                    var winner = document.createElement("p");
+                    winner.id = "winner";
+                    winner.innerHTML = "Grattis, du vann och klarade det på " +Memory.guesscounter+ " försök!";
+                    table.appendChild(winner);
+                    
+            setTimeout(function() {
+                    document.getElementById("winner").innerHTML = "Uppdatera sidan för nytt spel.";
+            }, 5000);
+            
             }
             
         }
