@@ -25,10 +25,14 @@ var Validator = {
                 
                 if(firstname === ""){
                     console.log("Firstname är tom!")
+                    document.querySelector("#firstname").focus();
+                    document.querySelector("#firstname").style.background = "#FF7878"
                 }
                 
                 if(lastname === ""){
                     console.log("Lastname är tom!")
+                    document.querySelector("#lastname").focus();
+                    document.querySelector("#lastname").style.background = "#FF7878"
                 }
                 
                 
