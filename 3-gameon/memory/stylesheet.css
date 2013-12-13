@@ -1,6 +1,7 @@
 body {
     background:#F4F7D7;
     text-align:center;
+    margin:auto 0;
 }
 
 h1 {
@@ -34,16 +35,23 @@ h1 {
 
 form {
     font-family:courier;
+    margin:auto;
+    width:500px;
+    text-align:left;
 }
 
 input {
     border-radius:5px;
 }
 
+#rows {
+    margin-left:32px;
+}
+
 #send {
     font-family:courier;
     font-size:1.0em;
     background:#AEB191;
+    margin-left:185px;
 
 }
-
