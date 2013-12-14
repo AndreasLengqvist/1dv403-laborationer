@@ -6,39 +6,40 @@ var Validator = {
 
     IDcount: 0,
     lncount: 0,
+    fncount: 0,
 
     init: function() {
             
             var send = document.querySelector("#send");         // Sändknappens ID.
             var myform = document.querySelector("#myform");     // forumlärets ID.
                 
-                
+            
                 // Hämtning av alla inputs id:n och deras values i formuläret.
                 var firstname = document.getElementById('fn');
                 var lastname = document.getElementById('ln');
                 var zipcode = document.getElementById('zipcode');
-                var zipvalue = zipcode.value;
                 var email = document.getElementById('email');
-                var emailvalue = email.value;
                 var pricetype = document.getElementById('pricetype');
                 var ptvalue = pricetype.value;
-                
+                var zipvalue = zipcode.value;
+                var emailvalue = email.value;
+
+
                 
                 // Om förnamnet är tomt när det tappar fokus.
                 firstname.onblur = function() {
                     
                     // Kollar värdet av inputfältet.
                     var fnvalue = firstname.value;
-                    var fninput = document.querySelector(".fninput");
-                    
+
                     // Om det inte är något värde i input.
-                    if(fnvalue == ""){
-                        Validator.onEmpty(fninput);
+                    if(fnvalue == "" && Validator.fncount == 0){
+                        Validator.onEmpty(firstname);
                     }
                     
                     // Om det är ett värde i input.
-                    else {
-                        Validator.onCorrect(fninput);
+                    if(fnvalue !== "") {
+                        Validator.onCorrect(firstname);
                     }
                 };
                 
@@ -49,60 +50,66 @@ var Validator = {
                     
                     // Kollar värdet av inputfältet.
                     var lnvalue = lastname.value;
-                    var lninput = document.querySelector(".lninput");
-                    
-                    // Om det inte är något värde i input.
-                    if(lnvalue === ""){
-                        Validator.onEmpty(lninput);
-                        
-                        }
-                    // Om det är ett värde i input.
-                    else {
-                        Validator.onCorrect(lninput);
-                    }
-                    
-                };
-                
-                // Skickar iväg formuläret med alla inputs.
-                //myform.submit();
-                // Om förnamnet är tomt när det tappar fokus.
-                
+                    var span = document.querySelector(".lnspan");
 
-            
-            
+                    // Om det inte är något värde i input.
+                    if(lnvalue === "" && Validator.lncount == 0){
+                        Validator.onEmpty(lastname);
+                        
+                    }
+                    // Om det är ett värde i input.
+                    if(lnvalue !== "") {
+                        Validator.onCorrect(lastname);
+                    }
+                };    
     },
     
-    // Anropas när inputfältet är tomt.
+    // Anropas när ett inputfält är tomt.
     onEmpty: function(inputID) {
         
-                        inputID.style.background = "#FF7878";
-                        console.log(Validator.IDcount)
-                        
-                        if(Validator.IDcount == 0){
-                        console.log(Validator.IDcount)
-                        // Skapar en span som fungerar som wrapper för att kunna sätta ett felmeddelande.
-                        var span = document.createElement("span");
-                        span.style.color = "#FF7878";
-                        span.id ="fnspan";
-                        span.appendChild(document.createTextNode(" Detta fält får inte lämnas blankt."));
-                        
-                        // Slänger in textnoden efter förälder lninput.
-                        inputID.parentNode.insertBefore(span, inputID.nextSibling);
-                        
-                        Validator.IDcount +=1;
+            inputID.className = inputID.className = " ";
+            inputID.className = inputID.className + " error";
+            
+            
+            // Skapar en span som fungerar som wrapper för att kunna sätta ett felmeddelande.
+            var span = document.createElement("span");
+            span.style.color = "#FF7878";
+            span.id = inputID.id+"span";
+            span.appendChild(document.createTextNode(" Detta fält får inte lämnas blankt."));
+            
+            // Slänger in textnoden efter förälder input.
+            inputID.parentNode.insertBefore(span, inputID.nextSibling);
 
-                        }
+            if(inputID.id == "fn"){
+                Validator.fncount += 1;
+            }
+                        
+            if(inputID.id == "ln"){
+                Validator.lncount += 1;
+            }
+            
+            
+        
     },
     
-    // Anropas när inputfältet är correct inskrivet eller rättat.
+    
+    // Anropas när inputfältet är korrekt inskrivet eller rättat.
     onCorrect: function(inputID) {
-                    Validator.IDcount = 0;
-                    
-                    if(background !== "#8CCD8C"){
-                    document.querySelector("#fnspan").remove();
-                    }
-                    var background = inputID.style.background = "#8CCD8C";
 
+        if(inputID.id == "fn"){
+            Validator.fncount = 0;
+        }       
+        
+        if(inputID.id == "ln"){
+            Validator.lncount = 0;
+        }       
+        
+        inputID.className = inputID.className = " ";
+        inputID.className = inputID.className = " correct";       
+        
+        
+        document.getElementById(inputID.id+"span").remove();
+        
     }
 
 
