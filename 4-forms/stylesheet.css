@@ -22,9 +22,9 @@ label {
 
 input {
     border-radius:5px;
-    display:block;
     margin-top:5px;
     padding:5px;
+    display:block;
 }
 
 select {
@@ -33,6 +33,11 @@ select {
     margin-top:5px;
     margin-bottom:60px;
     padding:5px;
+}
+
+span {
+    
+    font-size:0.7em;
 }
 
 #send {
