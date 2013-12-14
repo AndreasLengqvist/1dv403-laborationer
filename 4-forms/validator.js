@@ -60,7 +60,7 @@ var Validator = {
                     // Om det är ett värde i input.
                     else {
                         Validator.fncount = 0;
-                        document.querySelector(".fninput").style.background = "white";
+                        document.querySelector(".fninput").style.background = "#8CCD8C";
                         document.querySelector("#fnspan").remove();
                     }
                 };
@@ -96,8 +96,8 @@ var Validator = {
                     // Om det är ett värde i input.
                     else {
                         Validator.lncount = 0;
-                        document.querySelector(".lninput").style.background = "white";
-                        document.querySelector("#lnspan").remove();
+                        document.querySelector(".lninput").style.background = "#8CCD8C";
+                        document.querySelector("#lnspan").remove(document.querySelector("#lnspan"));
                         
                         return false;
                     }
