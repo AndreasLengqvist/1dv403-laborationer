@@ -1,21 +1,17 @@
 "use strict";
 
-
 var Validator = {
 
     Firstname: false,
     Lastname: false,
     Zipcode: false,
     Email: false,
-    IDcount: 0,
     lncount: 0,
     fncount: 0,
     zipcount: 0,
     emailcount: 0,
 
     init: function() {
-            
-            var send = document.querySelector("#send");         // Sändknappens ID.
 
             
                 // Hämtning av alla inputs id:n och deras values i formuläret.
@@ -29,7 +25,7 @@ var Validator = {
 
                 // Om förnamnet är tomt när det tappar fokus.
                 firstname.onblur = function() {
-                    // Kollar värdet av inputfältet.
+                    // Hämtar värdet av inputfältet.
                     var fnvalue = firstname.value;
 
                     // Om det inte är något värde i input.
@@ -53,7 +49,7 @@ var Validator = {
                 // Om efternamnet är tomt när det tappar fokus.
                 lastname.onblur = function() {
                     
-                    // Kollar värdet av inputfältet.
+                    // Hämtar värdet av inputfältet.
                     var lnvalue = lastname.value;
 
                     // Om det inte är något värde i input.
@@ -75,7 +71,7 @@ var Validator = {
                 
                 zipcode.onblur = function () {
 
-                    // Kollar värdet av inputfältet.
+                    // Hämtar värdet av inputfältet.
                     var zipvalue = zipcode.value;
                     
                     // Om det inte är något värde i input.
@@ -96,7 +92,7 @@ var Validator = {
                 
                 email.onblur = function () {
 
-                    // Kollar värdet av inputfältet.
+                    // Hämtar värdet av inputfältet.
                     var emailvalue = email.value;
                     var re = /\S+@\S+\.\S+/;
                     
@@ -115,19 +111,29 @@ var Validator = {
                         return Validator.Email;
                     }
                 };
-                
-                
-                
                     
-
-                    // När man klickar på sändknappen. Kolla så alla funktionerna returnar True. Om alla är true. Öppna popupfönstret.
-                    send.onclick = function() {
-                        console.log(Validator.Firstname, Validator.Lastname, Validator.Zipcode, Validator.Email)
-                        //if ((Validator.Firstname && Validator.Lastname && Validator.Zipcode && Validator.Email) === true){
-                            
-                            Validator.popupWindow(firstname, lastname, zipcode, email, pricetype);
-                        //}
-                    };
+                // När man klickar på "Genom för köp"-knappen. Kolla så alla funktionerna returnar True. Om alla är true. Öppna popupfönstret.
+                document.getElementById("confirm").onclick = function() {
+    
+                    if ((Validator.Firstname && Validator.Lastname && Validator.Zipcode && Validator.Email) === true){
+                        
+                        Validator.popupWindow(firstname, lastname, zipcode, email, pricetype);
+                    }
+                    else{
+                        if(Validator.Firstname === false){
+                            firstname.focus();
+                        }
+                        if(Validator.Lastname === false){
+                            lastname.focus();
+                        }
+                        if(Validator.Zipcode === false){
+                            zipcode.focus();
+                        }
+                        if(Validator.Email === false){
+                            email.focus();
+                        }
+                    }
+                };
                 
     },
     
@@ -142,6 +148,7 @@ var Validator = {
             // Skapar en span som fungerar som wrapper för att kunna sätta ett felmeddelande.
             var span = document.createElement("span");
             span.id = inputID.id+"span";
+            span.className = "errorspan";
             span.appendChild(document.createTextNode(text));
             
             // Slänger in textnoden efter förälder input.
@@ -202,35 +209,41 @@ var Validator = {
     
     
     
-popupWindow: function(firstname, lastname, zipcode, email, pricetype) {
-    console.log("POPUPIT")
-    
+    popupWindow: function (firstname, lastname, zipcode, email, pricetype) {
+            
+
             // Skapar de olika elementen som representerar popupfönstret.
             var main = document.querySelector("main");
+            var modalpop = document.createElement("div");
             var divpopup = document.createElement("div");
-            var text = "Vänligen bekräfta ditt köp";
             var h2 = document.createElement("h2");
             divpopup.id = "popup";
+            modalpop.id = "modalpop";
             
+            
+            var fnname = document.createElement("span");
+            var lnname = document.createElement("span");
+            var zipname = document.createElement("span");
+            var emailname = document.createElement("span");
+            var pricetypename = document.createElement("span");
+            
+            var fnvalue = document.createElement("span");
+            var lnvalue = document.createElement("span");
+            var zipvalue = document.createElement("span");
+            var emailvalue = document.createElement("span");
+            var pricetypevalue = document.createElement("span");
+            
+            var div1 = document.createElement("div");
+            var div2 = document.createElement("div");
+            
+            main.appendChild(modalpop);
             
             divpopup.appendChild(h2);
             
     
-            h2.appendChild(document.createTextNode(text));
+            h2.appendChild(document.createTextNode("Vänligen bekräfta ditt köp"));
             
-            
-            var fnname = document.createElement("p");
-            var lnname = document.createElement("p");
-            var zipname = document.createElement("p");
-            var emailname = document.createElement("p");
-            var pricetypename = document.createElement("p");
-            
-            var fnvalue = document.createElement("label");
-            var lnvalue = document.createElement("label");
-            var zipvalue = document.createElement("label");
-            var emailvalue = document.createElement("label");
-            var pricetypevalue = document.createElement("label");
-            
+            // Skapar noder för varje
             fnname.appendChild(document.createTextNode(firstname.name));
             lnname.appendChild(document.createTextNode(lastname.name));
             zipname.appendChild(document.createTextNode(zipcode.name));
@@ -253,30 +266,45 @@ popupWindow: function(firstname, lastname, zipcode, email, pricetype) {
             emailvalue.className = "lvalue";
             pricetypevalue.className = "lvalue";
             
-            divpopup.appendChild(fnname);
-            divpopup.appendChild(fnvalue);
+            div1.appendChild(fnname);
+            div1.appendChild(lnname);
+            div1.appendChild(zipname);
+            div1.appendChild(emailname);
+            div1.appendChild(pricetypename);
+            divpopup.appendChild(div1);
 
-            divpopup.appendChild(lnname);
-            divpopup.appendChild(lnvalue);
+            div2.appendChild(fnvalue);
+            div2.appendChild(lnvalue);
+            div2.appendChild(zipvalue);
+            div2.appendChild(emailvalue);
+            div2.appendChild(pricetypevalue);
+            divpopup.appendChild(div2);
+
+
+            // Skapar en Bekräfta och Avbryt-knapp.
+            var submit = document.createElement("button");
+            var close = document.createElement("button");
+
+            submit.appendChild(document.createTextNode("Bekräfta"));
+            close.appendChild(document.createTextNode("Avbryt"));
+
+            divpopup.appendChild(submit);
+            divpopup.appendChild(close);
 
             
-            divpopup.appendChild(zipname);
-            divpopup.appendChild(zipvalue);
-
-            divpopup.appendChild(emailname);
-            divpopup.appendChild(emailvalue);
-
-            divpopup.appendChild(pricetypename);
-            divpopup.appendChild(pricetypevalue);
-
-
             // Slänger in textnoden efter förälder input.
             main.parentNode.insertBefore(divpopup, main.nextSibling);
-
-}
-    
-
-
+            
+            
+            submit.onclick = function() {
+                document.getElementById("myform").submit();
+            };
+            
+            close.onclick = function() {
+                divpopup.remove();
+                modalpop.remove();
+            };
+    }
 };
 
 window.onload = Validator.init;

@@ -19,15 +19,17 @@ var Memory = {
         document.querySelector("h1").innerHTML = "Game OFF!";
         
         var sendbutton = document.querySelector("#send");
-            sendbutton.onclick = function(cols, rows) {
+            sendbutton.onclick = function() {
 
-                Memory.cols = document.getElementById('cols').value;
-                Memory.rows = document.getElementById('rows').value;
+                var icols = document.getElementById('cols').value;
+                var irows = document.getElementById('rows').value;
                 
-                var c = Memory.cols;
-                var r = Memory.rows;
-                
-                Memory.buildGame(c, r);
+                if(icols <= 4 && icols > 0 && irows <= 4 && irows > 0 && icols != 3 && irows != 3){
+                    Memory.cols = icols;
+                    Memory.rows = irows;
+                    Memory.buildGame(Memory.cols, Memory.rows);
+                }
+
             }
     },
     
@@ -38,7 +40,7 @@ var Memory = {
         document.querySelector("form").style.display = "none";
         document.querySelector("h1").innerHTML = "Game ON!";
         
-        Memory.memoryArray = new RandomGenerator.getPictureArray(c, r);
+        Memory.memoryArray = new RandomGenerator.getPictureArray(Memory.cols, Memory.rows);
         Memory.createMemGame();    
     },
     
