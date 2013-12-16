@@ -3,114 +3,73 @@
 
 var Validator = {
 
-    Firstname: false,
+
     IDcount: 0,
     lncount: 0,
     fncount: 0,
-    zipcount: 0,
-    emailcount: 0,
 
     init: function() {
             
             var send = document.querySelector("#send");         // Sändknappens ID.
-
+            var myform = document.querySelector("#myform");     // forumlärets ID.
+                
             
                 // Hämtning av alla inputs id:n och deras values i formuläret.
                 var firstname = document.getElementById('fn');
                 var lastname = document.getElementById('ln');
-                var zipcode = document.getElementById('zip');
+                var zipcode = document.getElementById('zipcode');
                 var email = document.getElementById('email');
+                var pricetype = document.getElementById('pricetype');
+                var ptvalue = pricetype.value;
+                var emailvalue = email.value;
 
-            
 
-
+                
                 // Om förnamnet är tomt när det tappar fokus.
-                firstname.onblur = function () {
+                firstname.onblur = function() {
+                    
                     // Kollar värdet av inputfältet.
                     var fnvalue = firstname.value;
 
                     // Om det inte är något värde i input.
                     if(fnvalue == "" && Validator.fncount == 0){
                         Validator.onEmpty(firstname);
-                        return false;
                     }
                     
                     // Om det är ett värde i input.
                     if(fnvalue !== "") {
                         Validator.onCorrect(firstname);
-                        Validator.Firstname = true;
-                        return Validator.Firstname;
                     }
                 };
                 
-
+                
                 
                 // Om efternamnet är tomt när det tappar fokus.
-                lastname.onblur = function () {
+                lastname.onblur = function() {
                     
                     // Kollar värdet av inputfältet.
                     var lnvalue = lastname.value;
+                    var span = document.querySelector(".lnspan");
 
                     // Om det inte är något värde i input.
                     if(lnvalue === "" && Validator.lncount == 0){
                         Validator.onEmpty(lastname);
-                        return false;
                         
                     }
                     // Om det är ett värde i input.
                     if(lnvalue !== "") {
-                        Validator.onCorrect(lastname);
-                        return true;
+
+                        lastname.className = lastname.className = " ";
+                        lastname.className = lastname.className = " correct";       
+                        
+                        if(Validator.lncount === 0){
+                        document.getElementById(lastname.id+"span").remove();     
+                        
+                        Validator.lncount += 1;
+                        }
                     }
                 };    
-                
-                
-                zipcode.onblur = function () {
-
-                    // Kollar värdet av inputfältet.
-                    var zipvalue = zipcode.value;
-
-                    // Om det inte är något värde i input.
-                    if(zipvalue === "" && Validator.zipcount == 0){
-                        Validator.onEmpty(zipcode);
-                        return false;
-                        
-                    }
-                    // Om det är ett värde i input.
-                    if(zipvalue !== "") {
-                        Validator.onCorrect(zipcode);
-                        return true;
-                    }
-                };
-                
-                email.onblur = function () {
-
-                    // Kollar värdet av inputfältet.
-                    var emailvalue = email.value;
-
-                    // Om det inte är något värde i input.
-                    if(emailvalue === "" && Validator.emailcount == 0){
-                        Validator.onEmpty(email);
-                        return false;
-                        
-                    }
-                    // Om det är ett värde i input.
-                    if(emailvalue !== "") {
-                        Validator.onCorrect(email);
-                        return true;
-                    }
-                };
-                
-                
-                    // När man klickar på sändknappen. Kolla så alla funktionerna returnar True. 
-                    send.onclick = function() {
-                            if (Validator.Firstname === true){
-                            document.getElementById("myform").submit();
-                        }
-                    };
-                
     },
-    
     
     // Anropas när ett inputfält är tomt.
     onEmpty: function(inputID) {
@@ -135,14 +94,8 @@ var Validator = {
             if(inputID.id == "ln"){
                 Validator.lncount += 1;
             }
-
-            if(inputID.id == "zip"){
-                Validator.zipcount += 1;
-            }
             
-            if(inputID.id == "email"){
-                Validator.emailcount += 1;
-            }
+            
         
     },
     
@@ -156,14 +109,6 @@ var Validator = {
         
         if(inputID.id == "ln"){
             Validator.lncount = 0;
-        }       
-        
-        if(inputID.id == "zip"){
-            Validator.zipcount = 0;
-        }               
-        
-        if(inputID.id == "email"){
-            Validator.emailcount = 0;
         }       
         
         inputID.className = inputID.className = " ";
