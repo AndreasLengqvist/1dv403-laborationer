@@ -19,7 +19,7 @@ var Validator = {
         var lastname = document.getElementById('ln');
         var zipcode = document.getElementById('zip');
         var email = document.getElementById('email');
-        var pricetype = document.getElementById("pricetype")
+        var pricetype = document.getElementById("pricetype");
 
         // Start.
         firstname.focus();
