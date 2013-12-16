@@ -4,6 +4,9 @@
 var Validator = {
 
     Firstname: false,
+    Lastname: false,
+    Zipcode: false,
+    Email: false,
     IDcount: 0,
     lncount: 0,
     fncount: 0,
@@ -20,11 +23,12 @@ var Validator = {
                 var lastname = document.getElementById('ln');
                 var zipcode = document.getElementById('zip');
                 var email = document.getElementById('email');
+                var pricetype = document.getElementById("pricetype")
 
 
 
                 // Om förnamnet är tomt när det tappar fokus.
-                firstname.onblur = function () {
+                firstname.onblur = function() {
                     // Kollar värdet av inputfältet.
                     var fnvalue = firstname.value;
 
@@ -47,7 +51,7 @@ var Validator = {
 
                 
                 // Om efternamnet är tomt när det tappar fokus.
-                lastname.onblur = function Lastname() {
+                lastname.onblur = function() {
                     
                     // Kollar värdet av inputfältet.
                     var lnvalue = lastname.value;
@@ -56,13 +60,15 @@ var Validator = {
                     if(lnvalue === "" && Validator.lncount === 0){
                         var text = " Detta fält får inte lämnas blankt.";
                         Validator.onEmpty(lastname, text);
-                        return false;
+                        Validator.Lastname = false;
+                        return Validator.Lasttname;
                         
                     }
                     // Om det är ett värde i input.
                     if(lnvalue !== "") {
                         Validator.onCorrect(lastname);
-                        return true;
+                        Validator.Lastname = true;
+                        return Validator.Lasttname;
                     }
                 };    
                 
@@ -76,13 +82,15 @@ var Validator = {
                     if(zipvalue === "" && Validator.zipcount === 0){
                         var text = " Ett giltigt postnummer innehåller 5 nummer.";
                         Validator.onEmpty(zipcode, text);
-                        return false;
+                        Validator.Zipcode = false;
+                        return Validator.Zipcode;
                         
                     }
                     // Om det är ett värde i input.
                     if(zipvalue !== "") {
                         Validator.onCorrect(zipcode);
-                        return true;
+                        Validator.Zipcode = true;
+                        return Validator.Zipcode;
                     }
                 };
                 
@@ -96,25 +104,29 @@ var Validator = {
                     if(!re.test(emailvalue) && Validator.emailcount === 0){
                         var text = " E-postadressen måste vara korrekt skriven. Exempel: hej@gmail.com";
                         Validator.onEmpty(email, text);
-                        return false;
+                        Validator.Email = false;
+                        return Validator.Email;
                 
                     }
                     // Om det är korrekt skrivet.
                     if(re.test(emailvalue)){
                         Validator.onCorrect(email);
-                        return true;
+                        Validator.Email = true;
+                        return Validator.Email;
                     }
                 };
                 
                 
                 
-                
+                    
 
-                    // När man klickar på sändknappen. Kolla så alla funktionerna returnar True. 
+                    // När man klickar på sändknappen. Kolla så alla funktionerna returnar True. Om alla är true. Öppna popupfönstret.
                     send.onclick = function() {
-                        if (Validator.Firstname === true){
-                            console.log("POOP  UUUUUP")
-                        }
+                        console.log(Validator.Firstname, Validator.Lastname, Validator.Zipcode, Validator.Email)
+                        //if ((Validator.Firstname && Validator.Lastname && Validator.Zipcode && Validator.Email) === true){
+                            
+                            Validator.popupWindow(firstname, lastname, zipcode, email, pricetype);
+                        //}
                     };
                 
     },
@@ -129,7 +141,6 @@ var Validator = {
             
             // Skapar en span som fungerar som wrapper för att kunna sätta ett felmeddelande.
             var span = document.createElement("span");
-            span.style.color = "#FF7878";
             span.id = inputID.id+"span";
             span.appendChild(document.createTextNode(text));
             
@@ -187,7 +198,83 @@ var Validator = {
             span.remove();
         }
 
-    }
+    },
+    
+    
+    
+popupWindow: function(firstname, lastname, zipcode, email, pricetype) {
+    console.log("POPUPIT")
+    
+            // Skapar de olika elementen som representerar popupfönstret.
+            var main = document.querySelector("main");
+            var divpopup = document.createElement("div");
+            var text = "Vänligen bekräfta ditt köp";
+            var h2 = document.createElement("h2");
+            divpopup.id = "popup";
+            
+            
+            divpopup.appendChild(h2);
+            
+    
+            h2.appendChild(document.createTextNode(text));
+            
+            
+            var fnname = document.createElement("p");
+            var lnname = document.createElement("p");
+            var zipname = document.createElement("p");
+            var emailname = document.createElement("p");
+            var pricetypename = document.createElement("p");
+            
+            var fnvalue = document.createElement("label");
+            var lnvalue = document.createElement("label");
+            var zipvalue = document.createElement("label");
+            var emailvalue = document.createElement("label");
+            var pricetypevalue = document.createElement("label");
+            
+            fnname.appendChild(document.createTextNode(firstname.name));
+            lnname.appendChild(document.createTextNode(lastname.name));
+            zipname.appendChild(document.createTextNode(zipcode.name));
+            emailname.appendChild(document.createTextNode(email.name));
+            pricetypename.appendChild(document.createTextNode(pricetype.name));
+            fnname.className = "lname";
+            lnname.className = "lname";
+            zipname.className = "lname";
+            emailname.className = "lname";
+            pricetypename.className = "lname";
+
+            fnvalue.appendChild(document.createTextNode(firstname.value));
+            lnvalue.appendChild(document.createTextNode(lastname.value));
+            zipvalue.appendChild(document.createTextNode(zipcode.value));
+            emailvalue.appendChild(document.createTextNode(email.value));
+            pricetypevalue.appendChild(document.createTextNode(pricetype.value));
+            fnvalue.className = "lvalue";
+            lnvalue.className = "lvalue";
+            zipvalue.className = "lvalue";
+            emailvalue.className = "lvalue";
+            pricetypevalue.className = "lvalue";
+            
+            divpopup.appendChild(fnname);
+            divpopup.appendChild(fnvalue);
+
+            divpopup.appendChild(lnname);
+            divpopup.appendChild(lnvalue);
+
+            
+            divpopup.appendChild(zipname);
+            divpopup.appendChild(zipvalue);
+
+            divpopup.appendChild(emailname);
+            divpopup.appendChild(emailvalue);
+
+            divpopup.appendChild(pricetypename);
+            divpopup.appendChild(pricetypevalue);
+
+
+            // Slänger in textnoden efter förälder input.
+            main.parentNode.insertBefore(divpopup, main.nextSibling);
+
+}
+    
 
 
 };

@@ -1,6 +1,7 @@
 body {
     background:#F4F7D7;
     text-align:center;
+    margin:auto;
 }
 
 h1 {
@@ -15,11 +16,7 @@ form {
     text-align:left;
 }
 
-span {
-    font-size:0.7em;
-}
-
-label {
+label.flabel {
     font-family:courier;
     display:block;
 }
@@ -30,6 +27,11 @@ input {
     margin-top:5px;
     padding:5px;
     display:inline-block;
+}
+
+span {
+    font-size:0.7em;
+    color:#FF7878;
 }
 
 select {
@@ -52,4 +54,35 @@ select {
 
 .correct {
     background:#8CCD8C;
+}
+
+#popup {
+    position:absolute;
+    top:30%;
+    left:40%;
+    width:40%;
+    background:white;
+    border: 1px ridge black;
+    border-radius: 30px;
+    box-shadow:5px 5px 20px;
+    text-align:left;
+}
+
+h2 {
+    font-family:courier;
+    font-size:1.2em;
+    margin-left:20px;
+    margin-bottom:30px;
+}
+
+
+p.lname {
+    font-family:courier;
+    margin-left:45px;
+    font-weight:bolder;
+    display:inline-block;
+}
+
+.lvalue {
+    font-family:courier;
 }
