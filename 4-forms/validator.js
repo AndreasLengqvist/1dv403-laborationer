@@ -32,7 +32,8 @@ var Validator = {
                     if(fnvalue === "" && Validator.fncount === 0){
                         var text = " Detta fält får inte lämnas blankt.";
                         Validator.onEmpty(firstname, text);
-                        return false;
+                        Validator.Firstname = false;
+                        return Validator.Firstname;
                     }
                     
                     // Om det är ett värde i input.
@@ -46,7 +47,7 @@ var Validator = {
 
                 
                 // Om efternamnet är tomt när det tappar fokus.
-                lastname.onblur = function () {
+                lastname.onblur = function Lastname() {
                     
                     // Kollar värdet av inputfältet.
                     var lnvalue = lastname.value;
@@ -105,12 +106,14 @@ var Validator = {
                     }
                 };
                 
-                        console.log(Validator.Firstname)
-                            
+                
+                
+                
+
                     // När man klickar på sändknappen. Kolla så alla funktionerna returnar True. 
                     send.onclick = function() {
-                            if (Validator.Firstname === true){
-                            document.getElementById("myform").submit();
+                        if (Validator.Firstname === true){
+                            console.log("POOP  UUUUUP")
                         }
                     };
                 
@@ -155,6 +158,8 @@ var Validator = {
     // Anropas när inputfältet är korrekt inskrivet eller rättat.
     onCorrect: function(inputID) {
 
+
+        // Nollställning av räknare.
         if(inputID.id == "fn"){
             Validator.fncount = 0;
         }       
@@ -171,12 +176,17 @@ var Validator = {
             Validator.emailcount = 0;
         }       
         
+        // Återställer klasserna.
         inputID.className = inputID.className = " ";
-        inputID.className = inputID.className = " correct";       
+        inputID.className = inputID.className = " correct";  
         
+        var span = document.getElementById(inputID.id+"span");
         
-        document.getElementById(inputID.id+"span").remove();
-        
+        // Om det finns en span, ta bort den.
+        if (span !== null){
+            span.remove();
+        }
+
     }
 
 

@@ -123,3 +123,18 @@ var Validator = {
 };
 
 window.onload = Validator.init;
+
+
+
+Validator.emailcount = 0;
+                        
+                        email.className = email.className = " ";
+                        email.className = email.className = " correct";       
+        
+                        document.getElementById("emailspan").remove();
+                        
+                        
+                        
+                                                    document.getElementById("myform").submit();
+
+                        
