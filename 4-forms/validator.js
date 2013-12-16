@@ -21,7 +21,6 @@ var Validator = {
                 var zipcode = document.getElementById('zip');
                 var email = document.getElementById('email');
 
-            
 
 
                 // Om förnamnet är tomt när det tappar fokus.
@@ -30,8 +29,9 @@ var Validator = {
                     var fnvalue = firstname.value;
 
                     // Om det inte är något värde i input.
-                    if(fnvalue == "" && Validator.fncount == 0){
-                        Validator.onEmpty(firstname);
+                    if(fnvalue === "" && Validator.fncount === 0){
+                        var text = " Detta fält får inte lämnas blankt.";
+                        Validator.onEmpty(firstname, text);
                         return false;
                     }
                     
@@ -52,8 +52,9 @@ var Validator = {
                     var lnvalue = lastname.value;
 
                     // Om det inte är något värde i input.
-                    if(lnvalue === "" && Validator.lncount == 0){
-                        Validator.onEmpty(lastname);
+                    if(lnvalue === "" && Validator.lncount === 0){
+                        var text = " Detta fält får inte lämnas blankt.";
+                        Validator.onEmpty(lastname, text);
                         return false;
                         
                     }
@@ -69,10 +70,11 @@ var Validator = {
 
                     // Kollar värdet av inputfältet.
                     var zipvalue = zipcode.value;
-
+                    
                     // Om det inte är något värde i input.
-                    if(zipvalue === "" && Validator.zipcount == 0){
-                        Validator.onEmpty(zipcode);
+                    if(zipvalue === "" && Validator.zipcount === 0){
+                        var text = " Ett giltigt postnummer innehåller 5 nummer.";
+                        Validator.onEmpty(zipcode, text);
                         return false;
                         
                     }
@@ -87,21 +89,24 @@ var Validator = {
 
                     // Kollar värdet av inputfältet.
                     var emailvalue = email.value;
-
-                    // Om det inte är något värde i input.
-                    if(emailvalue === "" && Validator.emailcount == 0){
-                        Validator.onEmpty(email);
+                    var re = /\S+@\S+\.\S+/;
+                    
+                    // Om värdet i E-post inte är korrekt skrivet.
+                    if(!re.test(emailvalue) && Validator.emailcount === 0){
+                        var text = " E-postadressen måste vara korrekt skriven. Exempel: hej@gmail.com";
+                        Validator.onEmpty(email, text);
                         return false;
-                        
+                
                     }
-                    // Om det är ett värde i input.
-                    if(emailvalue !== "") {
+                    // Om det är korrekt skrivet.
+                    if(re.test(emailvalue)){
                         Validator.onCorrect(email);
                         return true;
                     }
                 };
                 
-                
+                        console.log(Validator.Firstname)
+                            
                     // När man klickar på sändknappen. Kolla så alla funktionerna returnar True. 
                     send.onclick = function() {
                             if (Validator.Firstname === true){
@@ -113,7 +118,7 @@ var Validator = {
     
     
     // Anropas när ett inputfält är tomt.
-    onEmpty: function(inputID) {
+    onEmpty: function(inputID, text) {
         
             inputID.className = inputID.className = " ";
             inputID.className = inputID.className + " error";
@@ -123,7 +128,7 @@ var Validator = {
             var span = document.createElement("span");
             span.style.color = "#FF7878";
             span.id = inputID.id+"span";
-            span.appendChild(document.createTextNode(" Detta fält får inte lämnas blankt."));
+            span.appendChild(document.createTextNode(text));
             
             // Slänger in textnoden efter förälder input.
             inputID.parentNode.insertBefore(span, inputID.nextSibling);
