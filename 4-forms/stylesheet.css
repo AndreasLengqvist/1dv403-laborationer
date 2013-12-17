@@ -65,7 +65,14 @@ select {
 	left: 0;
 	background: black;
 	z-index: 99999;
-	opacity:0.5;
+    -webkit-opacity: 0.5;
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+    -webkit-transition: all 3s ease;
+    -moz-transition: all 3s ease;
+    -ms-transition: all 3s ease;
+    -o-transition: all 3s ease;
+    transition: all 3s ease;
 }
 
 #popup {

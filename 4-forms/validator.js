@@ -65,10 +65,12 @@ var Validator = {
         zipcode.onblur = function () {
             // Hämtar värdet i input, trimmar bort mellanslag och returnerar längden.
             var zipvalue = zipcode.value;
+            var rezip = /^\d{5}$/;
             
-            var rezip = /^\d{3} \d{2}$/;
-            var rezip2 = /^\d{5}$/;
-
+            // Ersätter inputvalue till sin godtagbara form.
+            zipvalue = zipvalue.replace(/\D/g, "");
+            zipcode.value = zipvalue;
+            
             // Om det inte är något värde i input.
             if (!rezip.test(zipvalue) && Validator.zipcount === 0){
                 var text = " Ett giltigt postnummer innehåller 5 nummer.";
@@ -109,6 +111,7 @@ var Validator = {
             // Kolla så alla funktionerna returnar True. Om ja, öppna modal-popup.
             if ((Validator.Firstname && Validator.Lastname && Validator.Zipcode && Validator.Email) === true){
                 Validator.popupWindow(firstname, lastname, zipcode, email, pricetype);
+                return false;
             }
             else{
                 if(Validator.Email === false){
@@ -122,6 +125,7 @@ var Validator = {
                 }
                 if(Validator.Firstname === false){
                     firstname.focus();
+                    return false;
                 }
             }
         };
