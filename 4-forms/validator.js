@@ -64,17 +64,20 @@ var Validator = {
         
         zipcode.onblur = function () {
             // Hämtar värdet i input, trimmar bort mellanslag och returnerar längden.
-            var zipvalue = zipcode.value.trim(zipvalue).length;
+            var zipvalue = zipcode.value;
             
+            var rezip = /^\d{3} \d{2}$/;
+            var rezip2 = /^\d{5}$/;
+
             // Om det inte är något värde i input.
-            if(zipvalue === 0 && Validator.zipcount === 0){
+            if (!rezip.test(zipvalue) && Validator.zipcount === 0){
                 var text = " Ett giltigt postnummer innehåller 5 nummer.";
                 Validator.onEmpty(zipcode, text);
                 Validator.Zipcode = false;
                 return Validator.Zipcode;
             }
             // Om det är ett värde i input.
-            if(zipvalue !== 0) {
+            if(rezip.test(zipvalue)) {
                 Validator.onCorrect(zipcode);
                 Validator.Zipcode = true;
                 return Validator.Zipcode;
@@ -84,17 +87,17 @@ var Validator = {
         email.onblur = function () {
             // Hämtar värdet i input.
             var emailvalue = email.value;
-            var re = /\S+@\S+\.\S+/;        // RegEx: text@text.text
+            var remail = /\S+@\S+\.\S+/;        // RegEx: text@text.text
             
             // Om värdet i E-post inte är korrekt skrivet.
-            if(!re.test(emailvalue) && Validator.emailcount === 0){
+            if(!remail.test(emailvalue) && Validator.emailcount === 0){
                 var text = " E-postadressen måste vara korrekt skriven. Exempel: hej@gmail.com";
                 Validator.onEmpty(email, text);
                 Validator.Email = false;
                 return Validator.Email;
             }
             // Om det är korrekt skrivet.
-            if(re.test(emailvalue)){
+            if(remail.test(emailvalue)){
                 Validator.onCorrect(email);
                 Validator.Email = true;
                 return Validator.Email;
