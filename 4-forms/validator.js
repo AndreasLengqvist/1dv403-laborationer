@@ -125,8 +125,8 @@ var Validator = {
                 }
                 if(Validator.Firstname === false){
                     firstname.focus();
-                    return false;
                 }
+                return false;
             }
         };
     },

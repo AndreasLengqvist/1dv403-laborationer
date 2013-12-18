@@ -2,6 +2,7 @@ body {
     background:#F4F7D7;
     text-align:center;
     margin:auto 0;
+    font-family:courier;
 }
 
 h1 {
@@ -48,7 +49,7 @@ input {
     margin-left:32px;
 }
 
-#send {
+button {
     font-family:courier;
     font-size:1.0em;
     background:#AEB191;

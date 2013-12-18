@@ -8,7 +8,7 @@ var Memory = {
     compareArray: [],       // Array som sparar ner och jämför de två gissade brickorna.
     paircounter: 0,         // Räknare som har hand om antalet rätta par.
     guesscounter: 0,        // Räknare som har hand om antalet gjorda gissningar.
-    rows: 0,                // Inskrivning av antalet rader i spelet.
+    rows: 4,                // Inskrivning av antalet rader i spelet.
     cols: 0,                // Inskrivning av antalet kolumner i spelet.
     
     
@@ -21,12 +21,10 @@ var Memory = {
         var sendbutton = document.querySelector("#send");
             sendbutton.onclick = function() {
 
-                var icols = document.getElementById('cols').value;
-                var irows = document.getElementById('rows').value;
-                
-                if(icols <= 4 && icols > 0 && irows <= 4 && irows > 0 && icols != 3 && irows != 3){
-                    Memory.cols = icols;
-                    Memory.rows = irows;
+                var cols = document.getElementById('selectop').value;
+
+                if(cols > 0){
+                    Memory.cols = cols;
                     Memory.buildGame(Memory.cols, Memory.rows);
                 }
 
@@ -50,7 +48,7 @@ var Memory = {
         // Skapar en p-tag som låtsas vara räknare.
         var counter = document.createElement("p");
         counter.id = "counter";
-        counter.innerHTML = "Antal rätta par: 0"
+        counter.innerHTML = "Antal rätta par: 0";
         document.querySelector("main").appendChild(counter);
         
         // Skapar tabellen som memoryspelet kommer ligga i.
