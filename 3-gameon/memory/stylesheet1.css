@@ -10,7 +10,7 @@ h1 {
     font-weight:lighter;
 }
 
-.memgame {
+table {
     margin:auto;
     width:200px;
     height:200px;
@@ -49,9 +49,8 @@ input {
     margin-left:32px;
 }
 
-button {
+[type=button] {
     font-family:courier;
     font-size:1.0em;
     background:#AEB191;
-    margin-left:185px;
 }
