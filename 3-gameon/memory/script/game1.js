@@ -1,10 +1,6 @@
 "use strict";
 
-
-
-
-
-// Konstruktor funktion.
+// Memorygame-objekt.
 var Game = function(game, rows) {
     var that = this;
     that.game = game;
@@ -16,14 +12,13 @@ var Game = function(game, rows) {
     that.memoryArray = [];
     
     // Lägg i init.
-    this.build = function() {
+    that.build = function() {
          
-            var that = this;
             // Storleksval
             var main = document.querySelector("main");
             
             var h1 = document.createElement("h1");
-            h1.className = this.game;
+            h1.className = game;
             h1.innerHTML = "Game OFF";
             main.appendChild(h1);
             
@@ -36,10 +31,10 @@ var Game = function(game, rows) {
             var opt2 = document.createElement("option");
             var opt3 = document.createElement("option");
             
-            opform.className = that.game+"form";
-            opdiv.className = that.game+"div";
+            opform.className = game+"form";
+            opdiv.className = game+"div";
             oplabel.innerHTML = "Välj storlek:";
-            opselect.className = that.game+"op";
+            opselect.className = game+"op";
             opt1.value = "2";
             opt1.text = "2x4";
             opt2.value = "3";
@@ -65,10 +60,10 @@ var Game = function(game, rows) {
             
                 // onclick-funktion som läser ner antalet kolumner och anropar buildGame.
                 opbutton.onclick = function() {
-                    var cols = document.querySelector("."+that.game+"op").value;
+                    var cols = document.querySelector("."+game+"op").value;
 
                     if(cols > 0){
-                        buildGame(that.game, cols, rows);
+                        buildGame(game, cols, rows);
                     }
     
                 };
@@ -107,7 +102,7 @@ var Game = function(game, rows) {
         
         // for-loop som skapar varje tr.
         for (var c = 0; c < cols; c += 1) {
-            document.querySelector("."+game+"table");
+            document.querySelector("."+that.game+"table");
             var tr = document.createElement("tr");
             table.appendChild(tr);
             
@@ -174,40 +169,39 @@ var Game = function(game, rows) {
 
 
 
- // Jämförelsefunktion som genom olika if-satser bestämmer vad som skall göras.
+    // Jämförelsefunktion som genom olika if-satser bestämmer vad som skall göras.
     var compareBricks = function(game) {
         
         // Räknare som håller koll på antalet gissningar.
-            that.guesscounter += 1;
+             that.guesscounter += 1;
         
-        // Om compareArrayens första index och andra index är lika. Fortsätt..
-        if( that.compareArray[0].getElementsByTagName("img")[0].getAttribute("src") ===  that.compareArray[1].getElementsByTagName("img")[0].getAttribute("src")){
-            
-            // Ett rätt par!
-             that.paircounter += 1;
-            
-            // Skapar en räknare som håller reda på antalet rätta rader.
-            var pairs = document.querySelector("."+game+"counter");
-            pairs.innerHTML = "Antal rätta par: "+ that.paircounter;
-            
-            // Nollställer compareArrayen.
-             that.compareArray = [];
-            
-            if( that.paircounter ===  that.memoryArray.length/2){
-                    var gamediv = document.querySelector("."+game+"div");
-                    var winner = document.createElement("p");
-                    winner.className = game+"winner";
-                    winner.innerHTML = "Grattis, du vann och klarade det på " + that.guesscounter+ " försök!";
-                    gamediv.appendChild(winner);
-                    
-            setTimeout(function() {
-                    document.querySelector("."+game+"winner").innerHTML = "Uppdatera sidan för nytt spel.";
-            }, 5000);
-            
+            // Om compareArrayens första index och andra index är lika. Fortsätt..
+            if( that.compareArray[0].getElementsByTagName("img")[0].getAttribute("src") ===  that.compareArray[1].getElementsByTagName("img")[0].getAttribute("src")){
+                
+                // Ett rätt par!
+                 that.paircounter += 1;
+                
+                // Skapar en räknare som håller reda på antalet rätta rader.
+                var pairs = document.querySelector("."+game+"counter");
+                pairs.innerHTML = "Antal rätta par: "+ that.paircounter;
+                
+                // Nollställer compareArrayen.
+                 that.compareArray = [];
+                
+                if( that.paircounter ===  that.memoryArray.length/2){
+                        var gamediv = document.querySelector("."+game+"div");
+                        var winner = document.createElement("p");
+                        winner.className = game+"winner";
+                        winner.innerHTML = "Grattis, du vann och klarade det på " + that.guesscounter+ " försök!";
+                        gamediv.appendChild(winner);
+                        
+                setTimeout(function() {
+                        document.querySelector("."+game+"winner").innerHTML = "Uppdatera sidan för nytt spel.";
+                }, 5000);
+                
             }
-            
         }
-        
+            
         // Annars vänd tillbaks brickorna till frågetecken och nollställ compareArrayen.
         else{
             
@@ -215,8 +209,5 @@ var Game = function(game, rows) {
                  that.compareArray[1].getElementsByTagName("img")[0].setAttribute("src", "pics/0.png");
                  that.compareArray = [];
         }
-        
     };
-    
-
 }
