@@ -29,7 +29,7 @@ var Login = {
         modalwindow.appendChild(loginwindow);
         
         
-        main.parentNode.insertBefore(loginwindow, main.nextSibling);
+        modalwindow.parentNode.insertBefore(loginwindow, modalwindow.nextSibling);
                         
         logininput.focus();
 
