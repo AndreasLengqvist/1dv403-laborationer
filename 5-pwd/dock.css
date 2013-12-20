@@ -5,7 +5,7 @@ nav {
  overflow: hidden;
  margin-left:-300px;
 }
- 
+
 #dock {
  float:left;
  height: 150px;
@@ -17,3 +17,51 @@ nav {
     background: url("pics/dock.png") repeat-x bottom; 
     opacity:0.9;
 }
+
+#menu_dashboard {
+ display: inline-block;
+ width: auto;
+ margin: 0px;
+ margin-left:80px;
+ padding: 0px;
+ list-style: none;
+}
+
+#menu_dashboard li {
+ width: auto;
+ height: auto;
+ display: inline-block;
+ bottom: 0;
+}
+
+#menu_dashboard li a {
+ display: block;
+ height: 80px;
+ width: 80px;
+ position: relative;
+ top:30px;
+}
+
+#menu_dashboard li a img {
+ width: 80%;
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ border: none;
+}
+
+#menu_dashboard li a:hover {
+position:absolute;
+top:15px;
+}
+
+
+#menu_dashboard li a {
+ -webkit-transition-property: position, top;
+ -webkit-transition-duration: 0.5s;
+ -o-transition-property: position, top;
+ -o-transition-duration: 0.5s;
+ -moz-transition-property: position, top;
+ -moz-transition-duration: 0.5s;
+}
+
