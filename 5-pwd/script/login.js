@@ -32,35 +32,47 @@ var Login = {
         main.parentNode.insertBefore(loginwindow, modalwindow.nextSibling);
                         
         logininput.focus();
+        var checkinputvalue = logininput.value.trim(checkinputvalue).length;
 
-        
+        console.log(checkinputvalue)
+
         logininput.onkeypress = function(e){
                 if (!e) {
                     e = window.event;
                 }
             
+            var checkinputvalue = logininput.value.trim(checkinputvalue).length;
+
+            console.log(checkinputvalue)
             if (e.keyCode == 13 &! e.shiftKey) {
-                if(logininput.value == 0){
+                if(checkinputvalue !== 0){
                     logininput.className = logininput.className = " ";
-                    logininput.className = logininput.className + " error";
-                }
-                else {
+                    logininput.className = logininput.className + " correct";
                     document.querySelector("#loginstatus").innerHTML = "Inloggad som "+logininput.value;
                     modalwindow.id = "modalwindow";
                     loginwindow.id = "loginwindow";
+                }
+                else {
+                    logininput.className = logininput.className = " ";
+                    logininput.className = logininput.className + " error";
                 }
             }
         };
         
         loginbutton.onclick = function() {
-            if(logininput.value == 0){
+            
+            var checkinputvalue = logininput.value.trim(checkinputvalue).length;
+
+            if(checkinputvalue !== 0){
                 logininput.className = logininput.className = " ";
-                logininput.className = logininput.className + " error";
-            }
-            else {
+                logininput.className = logininput.className + " correct";
                 document.querySelector("#loginstatus").innerHTML = "Inloggad som "+logininput.value;
                 modalwindow.id = "modalwindow";
                 loginwindow.id = "loginwindow";
+            }
+            else {
+                logininput.className = logininput.className = " ";
+                logininput.className = logininput.className + " error";
             }
         };
     }

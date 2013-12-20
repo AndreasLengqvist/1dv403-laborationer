@@ -125,3 +125,7 @@ body {
 .error {
     background:#FFAAAA;
 }
+
+.correct {
+    background:#8CCD8C;
+}
