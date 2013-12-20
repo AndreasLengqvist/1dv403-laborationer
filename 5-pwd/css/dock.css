@@ -1,0 +1,18 @@
+#dashboard {
+ position: absolute;
+ bottom: 0;
+ left:50%;
+ overflow: hidden;
+ margin-left:-300px;
+}
+ 
+#dock {
+ float:left;
+ height: 150px;
+ width:600px;
+}
+
+
+#dock { 
+    background: url("dock.png") repeat-x bottom; 
+}
