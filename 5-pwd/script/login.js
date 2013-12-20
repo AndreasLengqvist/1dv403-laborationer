@@ -31,17 +31,36 @@ var Login = {
         
         
         main.parentNode.insertBefore(loginwindow, main.nextSibling);
+        
+
+                logininput.focus();
 
         
-        var checklogin = document.querySelector("#logininput");
+        logininput.onkeypress = function(e){
+                if (!e) {
+                    e = window.event;
+                }
+            
+            if (e.keyCode == 13 &! e.shiftKey) {
+                if(checklogin.value == 0){
+                    logininput.className = logininput.className = " ";
+                    logininput.className = logininput.className + " error";
+                }
+                else {
+                    document.querySelector("#loginstatus").innerHTML = "Inloggad som "+logininput.value;
+                    modalwindow.remove();
+                    loginwindow.remove();
+                }
+            }
+        };
         
         loginbutton.onclick = function() {
-            if(checklogin.value == 0){
+            if(logininput.value == 0){
                 logininput.className = logininput.className = " ";
                 logininput.className = logininput.className + " error";
             }
             else {
-                document.querySelector("h1").innerHTML = "Hej "+logininput.value;
+                document.querySelector("#loginstatus").innerHTML = "Inloggad som "+logininput.value;
                 modalwindow.remove();
                 loginwindow.remove();
             }
