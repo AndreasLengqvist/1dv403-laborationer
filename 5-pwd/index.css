@@ -28,9 +28,23 @@ body {
 	left: 0;
 	background: black;
 	z-index: 99999;
-    -webkit-opacity: 0.8;
-    -moz-opacity: 0.8;
-    opacity: 0.8;
+    visibility:hidden;
+    opacity:0;
+    transition:visibility 0s linear 1.2s,opacity 1.2s linear;
+}
+
+#modalwindow2 {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: black;
+	z-index: 99999;
+    visibility:visible;
+    opacity:0.9;
+    transition-delay:0.0s;
     text-align:center;
 }
 
@@ -47,13 +61,36 @@ body {
     box-shadow:5px 5px 10px;
     text-align:center;
     z-index: 99999;
+    text-align:center;
+    visibility:hidden;
+    opacity:0;
+    transition:visibility 0s linear 1.2s,opacity 1.2s linear;
 }
+
+#loginwindow2 {
+    position:fixed;
+    top:20%;
+    left:50%;
+    width:250px;
+    height:170px;
+    margin-left:-125px;
+    background:#DADADA;
+    border-radius:8px;
+    border: 1px ridge black;
+    box-shadow:5px 5px 10px;
+    text-align:center;
+    z-index: 99999;
+    visibility:visible;
+    opacity:1;
+    transition-delay:0s;
+}
+
 
 #loginhead {
     position:relative;
     top:30px;
     color: #303030;
-    font-weight:bolder;
+    font-weight:bold;
     font-size:0.7em;
 }
 
