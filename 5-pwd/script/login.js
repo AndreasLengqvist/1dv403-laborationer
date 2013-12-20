@@ -34,7 +34,6 @@ var Login = {
         logininput.focus();
         var checkinputvalue = logininput.value.trim(checkinputvalue).length;
 
-        console.log(checkinputvalue)
 
         logininput.onkeypress = function(e){
                 if (!e) {
@@ -43,7 +42,6 @@ var Login = {
             
             var checkinputvalue = logininput.value.trim(checkinputvalue).length;
 
-            console.log(checkinputvalue)
             if (e.keyCode == 13 &! e.shiftKey) {
                 if(checkinputvalue !== 0){
                     logininput.className = logininput.className = " ";
