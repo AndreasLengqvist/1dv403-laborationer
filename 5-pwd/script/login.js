@@ -20,7 +20,7 @@ var Login = {
         logininput.id = "logininput";
         loginbutton.id = "loginbutton";
         
-        loginhead.appendChild(document.createTextNode("Vänligen, logga in med ett användarnamn:"));
+        loginhead.appendChild(document.createTextNode("Vänligen, välj ett användarnamn:"));
 
         
         loginwindow.appendChild(loginhead);
