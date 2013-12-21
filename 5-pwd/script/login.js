@@ -73,6 +73,13 @@ var Login = {
                 logininput.className = logininput.className + " error";
             }
         };
+        
+        var changelogin = document.querySelector("#loginlink");
+        
+        changelogin.onclick = function() {
+            modalwindow.id = "modalwindow2";
+            loginwindow.id = "loginwindow2";
+        };
     }
 };
 

@@ -14,7 +14,7 @@ nav {
 
 
 #dock { 
-    background: url("pics/dock.png") repeat-x bottom; 
+    background: url("pics/dock3.png") repeat-x bottom; 
     opacity:0.9;
 }
 
@@ -55,6 +55,9 @@ position:absolute;
 top:15px;
 }
 
+#loginit {
+    margin-left:37px;
+}
 
 #menu_dashboard li a {
  -webkit-transition-property: position, top;
@@ -67,7 +70,7 @@ top:15px;
 
 #loginicon {
     position:absolute;
-    left:70px;
+    left:443px;
     top:100px;
     font-family:"Lucida Console", Monaco, monospace;
     font-size:0.8em;
@@ -76,10 +79,9 @@ top:15px;
     opacity:0;
     transition:visibility 0s linear 0.1s,opacity 0.1s linear;
 }
-
 #loginicon2 {
     position:absolute;
-    left:70px;
+    left:443px;
     top:100px;
     font-family:"Lucida Console", Monaco, monospace;
     font-size:0.8em;
@@ -90,7 +92,7 @@ top:15px;
 
 #rssicon {
     position:absolute;
-    left:250px;
+    left:164px;
     top:100px;
     font-family:"Lucida Console", Monaco, monospace;
     font-size:0.8em;
@@ -101,7 +103,7 @@ top:15px;
 }
 #rssicon2 {
     position:absolute;
-    left:250px;
+    left:164px;
     top:100px;
     font-family:"Lucida Console", Monaco, monospace;
     font-size:0.8em;
@@ -109,9 +111,34 @@ top:15px;
     opacity:0.9;
     transition-delay:0.0s;
 }
+
 #memoryicon {
     position:absolute;
-    left:173px;
+    left:240px;
+    top:100px;
+    font-family:"Lucida Console", Monaco, monospace;
+    font-size:0.8em;
+    color:white;
+    visibility:hidden;
+    opacity:0;
+    transition:visibility 0s linear 0.1s, opacity 0.1s linear;
+    
+}
+#memoryicon2 {
+    position:absolute;
+    left:240px;
+    top:100px;
+    font-family:"Lucida Console", Monaco, monospace;
+    font-size:0.8em;
+    color:white;
+    opacity:0.9;
+    transition-delay:0.0s;
+    
+}
+
+#chaticon {
+    position:absolute;
+    left:330px;
     top:100px;
     font-family:"Lucida Console", Monaco, monospace;
     font-size:0.8em;
@@ -120,9 +147,9 @@ top:15px;
     opacity:0;
     transition:visibility 0s linear 0.1s, opacity 0.1s linear;
 }
-#memoryicon2 {
+#chaticon2 {
     position:absolute;
-    left:173px;
+    left:330px;
     top:100px;
     font-family:"Lucida Console", Monaco, monospace;
     font-size:0.8em;
@@ -130,3 +157,26 @@ top:15px;
     opacity:0.9;
     transition-delay:0.0s;
 }
+
+#imageicon {
+    position:absolute;
+    left:65px;
+    top:100px;
+    font-family:"Lucida Console", Monaco, monospace;
+    font-size:0.8em;
+    color:white;
+    visibility:hidden;
+    opacity:0;
+    transition:visibility 0s linear 0.1s, opacity 0.1s linear;
+}
+#imageicon2 {
+    position:absolute;
+    left:65px;
+    top:100px;
+    font-family:"Lucida Console", Monaco, monospace;
+    font-size:0.8em;
+    color:white;
+    opacity:0.9;
+    transition-delay:0.0s;
+}
+

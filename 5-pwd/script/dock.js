@@ -8,6 +8,8 @@ var Dock = {
         var loginicon = document.querySelector("#loginicon");
         var rssicon = document.querySelector("#rssicon");
         var memoryicon = document.querySelector("#memoryicon");
+        var imageicon = document.querySelector("#imageicon");
+        var chaticon = document.querySelector("#chaticon");
 
             document.querySelector("#loginlink").onmouseover = function(){
                 loginicon.id = "loginicon2";
@@ -20,6 +22,14 @@ var Dock = {
                 memoryicon.id = "memoryicon2";
             };
             
+            document.querySelector("#chatlink").onmouseover = function(){    
+                chaticon.id = "chaticon2";
+            };
+            
+            document.querySelector("#imagelink").onmouseover = function(){    
+                imageicon.id = "imageicon2";
+            };
+            
             
             document.querySelector("#loginlink").onmouseout = function(){
                 loginicon.id = "loginicon";
@@ -30,6 +40,14 @@ var Dock = {
                 
             document.querySelector("#memorylink").onmouseout = function(){    
                 memoryicon.id = "memoryicon";
+            };
+            
+            document.querySelector("#chatlink").onmouseout = function(){    
+                chaticon.id = "chaticon";
+            };
+            
+            document.querySelector("#imagelink").onmouseout = function(){    
+                imageicon.id = "imageicon";
             };
     }
 };
