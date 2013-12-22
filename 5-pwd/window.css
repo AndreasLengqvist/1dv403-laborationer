@@ -1,16 +1,17 @@
-.Memory {
+
+.windowdiv {
     float:left;
-    background:white;
-    height:300px;
-    width:200px;
+    background:#F0F0F0;
+    width:180px;
     margin-left:15px;
     margin-top:15px;
     border-radius:7px;
     border:1px ridge #848484;
     box-shadow:0 0 15px;
+    text-align:center;
 }
 
-.headdivMemory {
+.headdiv {
     text-align:center;
     background:#CACACA;
     height:40px;
@@ -19,41 +20,67 @@
     border-bottom:1px solid #848484;
 }
 
-.statusdivMemory {
+.statusdiv {
     background:red;
     
 }
 
-.headimgMemory {
+.headimg {
     float:right;
-    margin:5px;
     width:23px;
+    margin:5px;
 }
 
-.headlabelMemory {
+.headlabel {
     font-family:"Lucida Console", Monaco, monospace;
     font-size:0.7em;
     font-weight:bolder;
 }
 
-.headminimMemory {
+.headminim {
     float:left;
     margin-top:4px;
-    border-color:#FFD700;
+    border-color:#CDCD14;
     background:#FFD700;
     border-radius:20px;
     width:9px;
     height:15px;
-    opacity:0.5;
+    box-shadow:0px 0px 3px;
 }
 
-.headcloseMemory {
+.headclose {
     float:left;
     margin:4px;
-    border-color:#B40404;
-    background:#B40404;
+    border-color:#FF6868;
+    background:#EB5454;
     border-radius:20px;
     width:9px;
     height:15px;
-    opacity:0.8;
+    box-shadow:0px 0px 3px;
+}
+
+/** Memory-inställningar**/
+.counter {
+    font-family:"Lucida Console", Monaco, monospace;
+    font-size:0.6em;
+    font-weight:bolder;
+    margin-top:5px;
+}
+
+table {
+    margin-left:auto; 
+    margin-right:auto;
+    margin-top:15px;
+    margin-bottom:10px;
+}
+
+td {
+    padding-left:3px;
+}
+
+.winner {
+    font-family:"Lucida Console", Monaco, monospace;
+    font-size:0.6em;
+    font-weight:bolder;
+    margin-bottom:5px;
 }

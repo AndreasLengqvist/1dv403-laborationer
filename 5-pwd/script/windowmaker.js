@@ -14,7 +14,7 @@ MYMAK.makewindow = function () {
         var memory;
         n += 1;
 
-        memory = new MYMAK.Window("Memory "+[n], "Memory"+[n], 2, 4);
+        memory = new MYMAK.Window("Memory "+[n], "Memory"+[n], 4);
         
         memory.buildwindow();
         memory.buildGame();

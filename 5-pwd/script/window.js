@@ -5,14 +5,12 @@ var MYMAK = MYMAK || {};
  
  
     // Baskonstruktorn för fönsterkonstruktionen. De olika fönstervarianterna ärver grunden i från denna.
-    MYMAK.Window = function(name, idname, cols, rows) {
+    MYMAK.Window = function(name, idname, cols) {
     
         var that = this;
         this.name = name;
         this.idname = idname;
         this.cols = cols;
-        this.rows = rows;
-     
  
         that.guesscounter = 0;
         that.paircounter = 0;
@@ -26,25 +24,31 @@ var MYMAK = MYMAK || {};
             var windowdiv = document.createElement("div");
             var headdiv = document.createElement("div");
             var statusdiv = document.createElement("div");
-            windowdiv.className = that.name;
+            windowdiv.className = "windowdiv";
             windowdiv.id = that.idname;
-            console.log(that.idname)
-            headdiv.className = "headdiv"+that.name;
-            statusdiv.className = "statusdiv"+that.name;
+            console.log(that.idname);
+            headdiv.className = "headdiv";
+            headdiv.id = "headdiv"+that.name;
+            statusdiv.className = "statusdiv";
+            statusdiv.id = "statusdiv"+that.name;
 
             // Headdivens konstruktion.
             var headlabel = document.createElement("label");
             var headimg = document.createElement("img");
             var headclose = document.createElement("input");
             var headminim = document.createElement("input");
-            headimg.className = "headimg"+that.name;
+            headimg.className = "headimg";
+            headimg.id = "headimg"+that.name;
             headimg.src = "pics/dockmemoryicon.png";
-            headlabel.className = "headlabel"+that.name;
+            headlabel.className = "headlabel";
+            headlabel.id = "headlabel"+that.name;
             headlabel.appendChild(document.createTextNode(that.name));
             headclose.type = "button";
-            headclose.className = "headclose"+that.name;
+            headclose.className = "headclose";
+            headclose.id = "headclose"+that.name;
             headminim.type = "button";
-            headminim.className = "headminim"+that.name;
+            headminim.className = "headminim";
+            headminim.id = "headminim"+that.name;
 
             headdiv.appendChild(headclose);
             headdiv.appendChild(headminim);            
@@ -63,8 +67,10 @@ var MYMAK = MYMAK || {};
         var gamediv = document.querySelector("#"+that.idname);
         gamediv.id = that.idname;
         
+        var rows = 4;
+        
         that.memoryArray = new RandomGenerator.getPictureArray(cols, rows);
-        createMemGame(that.idname, that.cols, that.rows);
+        createMemGame(that.idname, that.cols, rows);
         };
     
         // Skapar elementet.    
@@ -72,7 +78,8 @@ var MYMAK = MYMAK || {};
             
             // Skapar en p-tag som låtsas vara räknare.
             var counter = document.createElement("p");
-            counter.className = game+"counter";
+            counter.className = "counter";
+            counter.id = game+"counter";
             counter.innerHTML = "Antal rätta par: 0";
             var gamediv = document.querySelector("#"+game);
             gamediv.appendChild(counter);
@@ -120,15 +127,12 @@ var MYMAK = MYMAK || {};
     
             // Gissningsfunktion (anonymfunktion) som anropas då man trycker på ett frågetecken.
             anchor.onclick = function() {
-                console.log(that.memoryArray[cellID])
-    
     
                 // Om den tryckta bilden är ett frågetecken. Fortsätt..
                 if(img.getAttribute("src") === "pics/0.png"){
                 
                     // Spara ner den tryckta bildens anchor till en compareArrey.
                     that.compareArray.push(anchor);
-                    console.log(that.compareArray)
                     // Går compareArrayens lenght över 2 så vänds brickorna tillbaks. Annars fortsätt..
                     if (that.compareArray.length === 1 || that.compareArray.length === 2){
                         
@@ -165,7 +169,7 @@ var MYMAK = MYMAK || {};
                      that.paircounter += 1;
                     
                     // Skapar en räknare som håller reda på antalet rätta rader.
-                    var pairs = document.querySelector("."+name+"counter");
+                    var pairs = document.querySelector("#"+name+"counter");
                     pairs.innerHTML = "Antal rätta par: "+ that.paircounter;
                     
                     // Nollställer compareArrayen.
@@ -174,14 +178,10 @@ var MYMAK = MYMAK || {};
                     if( that.paircounter ===  that.memoryArray.length/2){
                             var gamediv = document.querySelector("#"+name);
                             var winner = document.createElement("p");
-                            winner.className = name+"winner";
+                            winner.className = "winner";
+                            winner.id = name+"winner";
                             winner.innerHTML = "Grattis, du vann och klarade det på " + that.guesscounter+ " försök!";
                             gamediv.appendChild(winner);
-                            
-                    setTimeout(function() {
-                            document.querySelector("."+name+"winner").innerHTML = "Uppdatera sidan för nytt spel.";
-                    }, 5000);
-                    
                 }
             }
                 
