@@ -1,6 +1,6 @@
 "use strict";
 
-
+// Dockobjekt som har hand om själva menyn och dess funktioner.
 var Dock = {
     
     docktext: function(){

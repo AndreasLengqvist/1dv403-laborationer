@@ -1,9 +1,12 @@
 "use strict";
 
-var Login = {
+// Toppnivå namespace
+var MYMAK = MYMAK || {};
+
+// Loginobjekt som har hand om inloggningen av användaren.
+MYMAK.login = function() {
     
-    buildLogin: function(){
-        
+    // Skapar ett modalpopup-fönster som är själva inloggningfönstret.
         var modalwindow = document.createElement("div");
         var loginwindow = document.createElement("div");
         var loginhead = document.createElement("label");
@@ -34,7 +37,7 @@ var Login = {
         logininput.focus();
         var checkinputvalue = logininput.value.trim(checkinputvalue).length;
 
-
+        // Funktion som gör det möjligt att istället för att trycka på Logga in-knappen, istället trycka enter.
         logininput.onkeypress = function(e){
                 if (!e) {
                     e = window.event;
@@ -76,12 +79,12 @@ var Login = {
         
         var changelogin = document.querySelector("#loginlink");
         
+        // Funktion som tar om kör när en användare vill byta inloggningsnamn.
         changelogin.onclick = function() {
             modalwindow.id = "modalwindow2";
             loginwindow.id = "loginwindow2";
         };
-    }
-};
+    };
 
 
-window.onload = Login.buildLogin();
+window.onload = MYMAK.login();

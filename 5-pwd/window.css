@@ -1,0 +1,59 @@
+.Memory {
+    float:left;
+    background:white;
+    height:300px;
+    width:200px;
+    margin-left:15px;
+    margin-top:15px;
+    border-radius:7px;
+    border:1px ridge #848484;
+    box-shadow:0 0 15px;
+}
+
+.headdivMemory {
+    text-align:center;
+    background:#CACACA;
+    height:40px;
+    border-top-right-radius:5px;
+    border-top-left-radius:5px;
+    border-bottom:1px solid #848484;
+}
+
+.statusdivMemory {
+    background:red;
+    
+}
+
+.headimgMemory {
+    float:right;
+    margin:5px;
+    width:23px;
+}
+
+.headlabelMemory {
+    font-family:"Lucida Console", Monaco, monospace;
+    font-size:0.7em;
+    font-weight:bolder;
+}
+
+.headminimMemory {
+    float:left;
+    margin-top:4px;
+    border-color:#FFD700;
+    background:#FFD700;
+    border-radius:20px;
+    width:9px;
+    height:15px;
+    opacity:0.5;
+}
+
+.headcloseMemory {
+    float:left;
+    margin:4px;
+    border-color:#B40404;
+    background:#B40404;
+    border-radius:20px;
+    width:9px;
+    height:15px;
+    opacity:0.8;
+}
