@@ -4,7 +4,7 @@
 var MYMAK = MYMAK || {};
  
  
-    // Baskonstruktorn för fönsterkonstruktionen. De olika fönstervarianterna ärver grunden i från denna.
+    // Superkonstruktor för fönsterkonstruktionen. De olika fönstervarianterna ärver grunden i från denna.
     MYMAK.Window = function(idname, picicon) {
         
         this.idname = idname;
@@ -12,14 +12,15 @@ var MYMAK = MYMAK || {};
     };
 
         MYMAK.Window.prototype.buildWindow = function () {
-            
+                                console.log(this.poscount)
+
             var main = document.querySelector("main");
             
             var windowdiv = document.createElement("div");
             var headdiv = document.createElement("div");
             var statusdiv = document.createElement("div");
-            windowdiv.className = "windowdiv";
             windowdiv.id = this.idname;
+            windowdiv.className = "windowdiv2";
             headdiv.className = "headdiv";
             headdiv.id = "headdiv"+this.idname;
             statusdiv.className = "statusdiv";
@@ -50,8 +51,16 @@ var MYMAK = MYMAK || {};
 
             windowdiv.appendChild(headdiv);
             windowdiv.appendChild(statusdiv);
+
+           // windowdiv.style.top = this.poscount;
+           // windowdiv.style.left = this.poscount;
             
             main.appendChild(windowdiv);
+
+            
+            setTimeout(function() {
+            windowdiv.className = "windowdiv";
+            }, 50);
             
             // Hack för att få Stäng-knappen att fungera.
             var that = this;

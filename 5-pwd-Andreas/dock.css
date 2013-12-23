@@ -78,7 +78,6 @@ top:5px;
     color:white;
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 0.1s,opacity 0.1s linear;
 }
 #loginicon2 {
     position:absolute;
@@ -88,7 +87,7 @@ top:5px;
     font-size:0.6em;
     color:white;
     opacity:0.9;
-    transition-delay:0.0s;
+    transition:visibility 0s, 0.4s,opacity 0.4s;
 }
 
 #rssicon {
@@ -100,7 +99,6 @@ top:5px;
     color:white;
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 0.1s,opacity 0.1s linear;
 }
 #rssicon2 {
     position:absolute;
@@ -110,7 +108,6 @@ top:5px;
     font-size:0.6em;
     color:white;
     opacity:0.9;
-    transition-delay:0.0s;
 }
 
 #memoryicon {
@@ -122,8 +119,7 @@ top:5px;
     color:white;
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 0.1s, opacity 0.1s linear;
-    
+
 }
 #memoryicon2 {
     position:absolute;
@@ -133,8 +129,7 @@ top:5px;
     font-size:0.6em;
     color:white;
     opacity:0.9;
-    transition-delay:0.0s;
-    
+    transition:visibility 0s, 0.4s,opacity 0.4s;
 }
 
 #chaticon {
@@ -146,7 +141,6 @@ top:5px;
     color:white;
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 0.1s, opacity 0.1s linear;
 }
 #chaticon2 {
     position:absolute;
@@ -156,7 +150,7 @@ top:5px;
     font-size:0.6em;
     color:white;
     opacity:0.9;
-    transition-delay:0.0s;
+    transition:visibility 0s, 0.4s,opacity 0.4s;
 }
 
 #imageicon {
@@ -168,7 +162,6 @@ top:5px;
     color:white;
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 0.1s, opacity 0.1s linear;
 }
 #imageicon2 {
     position:absolute;
@@ -178,6 +171,6 @@ top:5px;
     font-size:0.6em;
     color:white;
     opacity:0.9;
-    transition-delay:0.0s;
+    transition:visibility 0s, 0.4s,opacity 0.4s;
 }
 

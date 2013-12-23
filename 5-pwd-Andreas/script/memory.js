@@ -5,10 +5,10 @@ var MYMAK = MYMAK || {};
 
 
 
-    // Konstruktorn för Memorykonstruktionen. Ärver grunden från MYMAK.Window.
-    MYMAK.Memory = function(idname, picion, cols) {
+    // Konstruktorn för Memoryspelet. Ärver grunden från MYMAK.Window.
+    MYMAK.Memory = function(idname, picion, poscount, cols) {
     
-        MYMAK.Window.call(this, idname, picion);
+        MYMAK.Window.call(this, idname, picion, poscount);
         
         
         this.cols = cols;
@@ -16,7 +16,6 @@ var MYMAK = MYMAK || {};
         this.paircounter = 0;
         this.compareArray = [];
         this.memoryArray = [];
-        console.log(this.compareArray)
     };
 
 
@@ -113,7 +112,6 @@ var MYMAK = MYMAK || {};
 
                     // Skapar en räknare som håller reda på antalet rätta rader.
                     var pairs = document.querySelector("#"+name+"counter");
-                    console.log(pairs);
                     pairs.innerHTML = "Antal rätta par: "+that.paircounter;
                     
                     // Nollställer compareArrayen.

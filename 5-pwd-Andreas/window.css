@@ -7,6 +7,9 @@
 /** 1. Fönsterinställningar för alla fönster.**/
 .windowdiv {
     float:left;
+    position:absolute;
+    top:5px;
+    left:5px;
     background:#F5F5F5;
     min-width:180px;
     margin-left:5px;
@@ -15,6 +18,27 @@
     border:1px ridge #848484;
     box-shadow:0 0 15px;
     text-align:center;
+    opacity:1.0;
+    visibility:visible;
+    transition:visibility 0s, 0.5s,opacity 0.5s;
+}
+
+.windowdiv2 {
+    float:left;
+    position:relative;
+    top:80%;
+    left:40%;
+    background:#F5F5F5;
+    min-width:180px;
+    margin-left:5px;
+    margin-top:5px;
+    border-radius:7px;
+    border:1px ridge #848484;
+    box-shadow:0 0 15px;
+    text-align:center;
+    opacity:0;
+    visibility:hidden;
+    transition-delay:0.0s;
 }
 
 .headdiv {
