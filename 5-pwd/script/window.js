@@ -5,26 +5,25 @@ var MYMAK = MYMAK || {};
  
  
     // Baskonstruktorn för fönsterkonstruktionen. De olika fönstervarianterna ärver grunden i från denna.
-    MYMAK.Window = function(name, idname, picicon) {
-    
-        var that = this;
-        this.name = name;
+    MYMAK.Window = function(idname, picicon) {
+        
         this.idname = idname;
         this.picicon = picicon;
-        
-        that.buildwindow = function () {
-            var body = document.querySelector("body");
+    };
+
+        MYMAK.Window.prototype.buildWindow = function () {
+            
+            var main = document.querySelector("main");
             
             var windowdiv = document.createElement("div");
             var headdiv = document.createElement("div");
             var statusdiv = document.createElement("div");
             windowdiv.className = "windowdiv";
-            windowdiv.id = that.idname;
-            console.log(that.idname);
+            windowdiv.id = this.idname;
             headdiv.className = "headdiv";
-            headdiv.id = "headdiv"+that.name;
+            headdiv.id = "headdiv"+this.idname;
             statusdiv.className = "statusdiv";
-            statusdiv.id = "statusdiv"+that.name;
+            statusdiv.id = "statusdiv"+this.idname;
 
             // Headdivens konstruktion.
             var headlabel = document.createElement("label");
@@ -32,17 +31,17 @@ var MYMAK = MYMAK || {};
             var headclose = document.createElement("input");
             var headminim = document.createElement("input");
             headimg.className = "headimg";
-            headimg.id = "headimg"+that.name;
-            headimg.src = that.picicon;
+            headimg.id = "headimg"+this.idname;
+            headimg.src = this.picicon;
             headlabel.className = "headlabel";
-            headlabel.id = "headlabel"+that.name;
-            headlabel.appendChild(document.createTextNode(that.name));
+            headlabel.id = "headlabel"+this.idname;
+            headlabel.appendChild(document.createTextNode(this.idname));
             headclose.type = "button";
             headclose.className = "headclose";
-            headclose.id = "headclose"+that.idname;
+            headclose.id = "headclose"+this.idname;
             headminim.type = "button";
             headminim.className = "headminim";
-            headminim.id = "headminim"+that.idname;
+            headminim.id = "headminim"+this.idname;
 
             headdiv.appendChild(headclose);
             headdiv.appendChild(headminim);            
@@ -52,15 +51,14 @@ var MYMAK = MYMAK || {};
             windowdiv.appendChild(headdiv);
             windowdiv.appendChild(statusdiv);
             
-            body.appendChild(windowdiv);
+            main.appendChild(windowdiv);
             
-            var close = document.querySelector("#headclose"+that.idname)
+            // Hack för att få Stäng-knappen att fungera.
+            var that = this;
+
+            var close = document.querySelector("#headclose"+that.idname);
             close.onclick = function () {
                 
-                console.log(that.idname)
             document.querySelector("#"+that.idname).remove();
-            }
+            };
     };
-};
-
-window.onload = MYMAK.Window();

@@ -12,8 +12,6 @@ var MYMAK = MYMAK || {};
     
         var that = this;
         
-        console.log("Inne och hämtar och bygger i Imageviewer-konstruktorn");
-        
     };
 
 
