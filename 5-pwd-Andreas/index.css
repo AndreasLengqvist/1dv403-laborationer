@@ -1,8 +1,6 @@
 body {
     background: url("pics/nasabackground.jpg") no-repeat; 
-    background-size:1554px 875px;
-    width:1366px;
-    height:768px;
+    background-size:1680px 1050px;
 }
 
 #loginstatus {
@@ -128,4 +126,17 @@ body {
 
 .correct {
     background:#8CCD8C;
+}
+
+
+
+
+.monkey { 
+background: #FF0000; /* red background */
+width: 200px;
+height: 200px;
+position: absolute; /* we want to set an absolute position so the div can be moved in reference to the screen */
+top: 50px; /* this sets the positioning of the element in reference to the top left of your window. it will space it 50 pixels from the top */ 
+left: 50px; /* this will set the position of the element 50 pixels to right of the top left of your window. */
+z-index: 5; /* this will position it above anything with a lower z-index, sort of like layers. So you could layer these divs using z-index and have them stack on each other. */ 
 }

@@ -5,8 +5,25 @@
 
 **/
 /** 1. Fönsterinställningar för alla fönster.**/
+
+#testdiv {
+        position:absolute;
+    top:5px;
+    left:5px;
+    height:200px;
+    background:#F5F5F5;
+    min-width:180px;
+    margin-left:5px;
+    margin-top:5px;
+    border-radius:7px;
+    border:1px ridge #848484;
+    box-shadow:0 0 15px;
+    text-align:center;
+    opacity:1.0;
+    visibility:visible;
+}
+
 .windowdiv {
-    float:left;
     position:absolute;
     top:5px;
     left:5px;
@@ -24,8 +41,7 @@
 }
 
 .windowdiv2 {
-    float:left;
-    position:relative;
+    position:absolute;
     top:80%;
     left:40%;
     background:#F5F5F5;

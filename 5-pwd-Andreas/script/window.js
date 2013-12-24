@@ -5,10 +5,11 @@ var MYMAK = MYMAK || {};
  
  
     // Superkonstruktor för fönsterkonstruktionen. De olika fönstervarianterna ärver grunden i från denna.
-    MYMAK.Window = function(idname, picicon) {
+    MYMAK.Window = function(idname, picicon, poscount) {
         
         this.idname = idname;
         this.picicon = picicon;
+        this.poscount = poscount;
     };
 
         MYMAK.Window.prototype.buildWindow = function () {
@@ -52,8 +53,8 @@ var MYMAK = MYMAK || {};
             windowdiv.appendChild(headdiv);
             windowdiv.appendChild(statusdiv);
 
-           // windowdiv.style.top = this.poscount;
-           // windowdiv.style.left = this.poscount;
+            windowdiv.style.top = this.poscount;
+             windowdiv.style.left = this.poscount;
             
             main.appendChild(windowdiv);
 
