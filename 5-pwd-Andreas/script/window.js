@@ -13,7 +13,6 @@ var MYMAK = MYMAK || {};
     };
 
         MYMAK.Window.prototype.buildWindow = function () {
-                                console.log(this.poscount)
 
             var main = document.querySelector("main");
             
@@ -57,7 +56,17 @@ var MYMAK = MYMAK || {};
              windowdiv.style.left = this.poscount;
             
             main.appendChild(windowdiv);
+            
+            
+            
+            var topZIndex = 0;  
+            
+            windowdiv.onclick = function() {
+                topZIndex += 1;
+                windowdiv.style.zIndex = topZIndex;
+        };
 
+            
             
             setTimeout(function() {
             windowdiv.className = "windowdiv";
@@ -71,4 +80,5 @@ var MYMAK = MYMAK || {};
                 
             document.querySelector("#"+that.idname).remove();
             };
+            
     };
