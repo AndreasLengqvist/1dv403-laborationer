@@ -11,7 +11,7 @@ var MYMAK = MYMAK || {};
         this.picicon = picicon;
         this.poscount = poscount;
     };
-
+        // Skapar grunden till fönstret.
         MYMAK.Window.prototype.buildWindow = function () {
 
             var main = document.querySelector("main");
@@ -58,16 +58,6 @@ var MYMAK = MYMAK || {};
             main.appendChild(windowdiv);
             
             
-            
-            var topZIndex = 0;  
-            
-            windowdiv.onclick = function() {
-                topZIndex += 1;
-                windowdiv.style.zIndex = topZIndex;
-        };
-
-            
-            
             setTimeout(function() {
             windowdiv.className = "windowdiv";
             }, 50);
@@ -79,6 +69,20 @@ var MYMAK = MYMAK || {};
             close.onclick = function () {
                 
             document.querySelector("#"+that.idname).remove();
+            };
+            
+            
+                        // Flyttar det fokuserade fönstret till toppen av alla andra.
+            windowdiv.onclick = function() {
+                var focusZIndex = 1;
+                var nodes = document.querySelectorAll(".windowdiv");
+                
+                
+                for (var i = 0; i < nodes.length; i += 1) {
+                nodes[i].style.zIndex = "1";
+                }
+                focusZIndex += 1;
+                windowdiv.style.zIndex = focusZIndex;
             };
             
     };
