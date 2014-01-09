@@ -12,7 +12,6 @@
     top:5px;
     left:5px;
     background:#F5F5F5;
-    min-width:180px;
     margin-left:5px;
     margin-top:5px;
     border-radius:7px;
@@ -22,7 +21,6 @@
     opacity:1.0;
     visibility:visible;
     transition:visibility 0s, 0.5s,opacity 0.5s;
-    z-index:1;
 }
 
 .windowdiv2 {
@@ -30,7 +28,6 @@
     top:80%;
     left:40%;
     background:#F5F5F5;
-    min-width:180px;
     margin-left:5px;
     margin-top:5px;
     border-radius:7px;
@@ -40,7 +37,6 @@
     opacity:0;
     visibility:hidden;
     transition-delay:0.0s;
-    z-index:1;
 }
 
 .headdiv {

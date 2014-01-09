@@ -9,16 +9,24 @@ MYMAK.makewindow = function () {
     var mn = 0;
     var imn = 0;
     var rn = 0;
-    var poscount = 0;
-    
+    var width;
+    var height;
+    MYMAK.postopcount = 0;
+    MYMAK.posleftcount = 0;
+    MYMAK.zindex = 0;
+
     
     // Skapandet av ett Memoryspel.
     document.querySelector("#memorylink").onclick = function() {
         
         var memory;
+        width = 180;
+        height = 250;
         mn += 1;
-        poscount += 15;
-        memory = new MYMAK.Memory("Memory"+[mn], "pics/dockmemoryicon.png", poscount+"px", 4);
+        MYMAK.postopcount += 15;
+        MYMAK.posleftcount += 15;
+
+        memory = new MYMAK.Memory("Memory"+[mn], "pics/dockmemoryicon.png", MYMAK.postopcount, MYMAK.posleftcount, width, height, 4);
         
         memory.buildWindow();
         memory.buildGame();
@@ -29,10 +37,13 @@ MYMAK.makewindow = function () {
     document.querySelector("#imagelink").onclick = function() {
         
         var imageviewer;
+        width = 200;
+        height = 250;
         imn += 1;
-        poscount += 15;
+        MYMAK.postopcount += 15;
+        MYMAK.posleftcount += 15;
 
-        imageviewer = new MYMAK.Imageviewer("ImageViewer"+[imn], "pics/dockimageicon.png", poscount+"px");
+        imageviewer = new MYMAK.Imageviewer("ImageView"+[imn], "pics/dockimageicon.png", MYMAK.postopcount, MYMAK.posleftcount, width, height);
         
         imageviewer.buildWindow();
     };    
@@ -42,10 +53,13 @@ MYMAK.makewindow = function () {
     document.querySelector("#rsslink").onclick = function() {
         
         var rssfeed;
+        width = 180;
+        height = 350;
         rn += 1;
-        poscount += 15;
-
-        rssfeed = new MYMAK.Rssfeed("RSSFeed"+[rn], "pics/dockrssicon1.png", poscount+"px");
+        MYMAK.postopcount += 15;
+        MYMAK.posleftcount += 15;
+        
+        rssfeed = new MYMAK.Rssfeed("RSSFeed"+[rn], "pics/dockrssicon1.png", MYMAK.postopcount, MYMAK.posleftcount, width, height);
         
         rssfeed.buildWindow();
     };    

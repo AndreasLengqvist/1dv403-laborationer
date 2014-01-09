@@ -5,15 +5,20 @@ var MYMAK = MYMAK || {};
  
  
     // Superkonstruktor för fönsterkonstruktionen. De olika fönstervarianterna ärver grunden i från denna.
-    MYMAK.Window = function(idname, picicon, poscount) {
+    MYMAK.Window = function(idname, picicon, postopcount, posleftcount, width, height) {
         
         this.idname = idname;
         this.picicon = picicon;
-        this.poscount = poscount;
+        this.postopcount = postopcount;
+        this.posleftcount = posleftcount;
+        this.width = width;
+        this.height = height;
     };
         // Skapar grunden till fönstret.
         MYMAK.Window.prototype.buildWindow = function () {
-
+            
+            MYMAK.zindex += 1;
+            
             var main = document.querySelector("main");
             
             var windowdiv = document.createElement("div");
@@ -21,6 +26,7 @@ var MYMAK = MYMAK || {};
             var statusdiv = document.createElement("div");
             windowdiv.id = this.idname;
             windowdiv.className = "windowdiv2";
+            windowdiv.style.zIndex = MYMAK.zindex;
             headdiv.className = "headdiv";
             headdiv.id = "headdiv"+this.idname;
             statusdiv.className = "statusdiv";
@@ -52,8 +58,22 @@ var MYMAK = MYMAK || {};
             windowdiv.appendChild(headdiv);
             windowdiv.appendChild(statusdiv);
 
-            windowdiv.style.top = this.poscount;
-             windowdiv.style.left = this.poscount;
+
+            // Kod som gör att fönsterna studsar om de kommer utanför de angivna värderna.
+            if(this.postopcount+this.height > 835){
+            MYMAK.postopcount = 0;
+            }
+
+            if(this.posleftcount + this.width > 1645){
+            MYMAK.posleftcount = 150;
+            }
+
+            // Sätter attribut för varje unikt fönster.
+            windowdiv.style.top = this.postopcount+"px";
+            windowdiv.style.left = this.posleftcount+"px";
+            windowdiv.style.width = this.width+"px";
+            windowdiv.style.height = this.height+"px";
+
             
             main.appendChild(windowdiv);
             
@@ -71,18 +91,11 @@ var MYMAK = MYMAK || {};
             document.querySelector("#"+that.idname).remove();
             };
             
-            
-                        // Flyttar det fokuserade fönstret till toppen av alla andra.
+
+            // Flyttar det fokuserade fönstret till toppen av alla andra.
             windowdiv.onclick = function() {
-                var focusZIndex = 1;
-                var nodes = document.querySelectorAll(".windowdiv");
-                
-                
-                for (var i = 0; i < nodes.length; i += 1) {
-                nodes[i].style.zIndex = "1";
-                }
-                focusZIndex += 1;
-                windowdiv.style.zIndex = focusZIndex;
+                MYMAK.zindex += 1;
+                windowdiv.style.zIndex = MYMAK.zindex;
             };
             
     };

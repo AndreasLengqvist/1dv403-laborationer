@@ -6,9 +6,9 @@ var MYMAK = MYMAK || {};
 
 
     // Konstruktorn för Memoryspelet. Ärver grunden från MYMAK.Window.
-    MYMAK.Memory = function(idname, picion, poscount, cols) {
+    MYMAK.Memory = function(idname, picion, postopcount, posleftcount, width, height, cols) {
     
-        MYMAK.Window.call(this, idname, picion, poscount);
+        MYMAK.Window.call(this, idname, picion, postopcount, posleftcount, width, height);
         
         
         this.cols = cols;
