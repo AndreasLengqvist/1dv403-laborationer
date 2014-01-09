@@ -46,6 +46,7 @@ MYMAK.makewindow = function () {
         imageviewer = new MYMAK.Imageviewer("ImageView"+[imn], "pics/dockimageicon.png", MYMAK.postopcount, MYMAK.posleftcount, width, height);
         
         imageviewer.buildWindow();
+        imageviewer.AjaxCon();
     };    
     
     
