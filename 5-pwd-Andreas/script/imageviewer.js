@@ -38,7 +38,7 @@ var MYMAK = MYMAK || {};
             };
             
             
-            // Splitfunktion som loopar igenom objekten och splittar upp dem.
+            // Steg 2. Splitfunktion som loopar igenom objekten och splittar upp dem.
             MYMAK.Imageviewer.prototype.objectSplitter = function(name, objects){
                 
                 var widthArray = [];
@@ -46,58 +46,64 @@ var MYMAK = MYMAK || {};
                 var pictures = [];
                 pictures = objects;
                 
+                
                 for (var i = 0; i < pictures.length; i += 1) {
-                                    
+                    
                     widthArray.push(pictures[i].thumbWidth)
                     heightArray.push(pictures[i].thumbHeight)
-                    console.log(pictures[i].thumbHeight)
-                    
-                    MYMAK.Imageviewer.prototype.adjustMaker(heightArray, widthArray);
-                    MYMAK.Imageviewer.prototype.pictureMaker(name, objects, pictures, i);
                 }
+                
+                MYMAK.Imageviewer.prototype.adjustMaker(heightArray, widthArray, name, objects, pictures, i);
+                
             };
             
             
-            // Bildredigerarfunktion som redigerar och visar upp bilden i applikationen. (Ligger i innersluten i loopen från funktionen objectsSplitter)
-            MYMAK.Imageviewer.prototype.pictureMaker = function(name, objects, pictures, i){
+            // Steg 3. Bildredigerarfunktion som redigerar och visar upp bilden i applikationen. (Ligger i innersluten i loopen från funktionen objectsSplitter)
+            MYMAK.Imageviewer.prototype.pictureMaker = function(maxheight, maxwidth, name, objects, pictures, i){
 
                 var windowdiv = document.querySelector("#"+name);
                 var imagediv = document.createElement("div");
                 var imagelink = document.createElement("a");
                 var image = document.createElement("img");
                 
-                
-                
                 imagediv.className = "imagewrapper";
                 imagelink.className = "imagelink";
+            
                 
                     // Sätter tumnagelbildsattributen.
                     image.setAttribute("src", pictures[i].thumbURL);
                     image.setAttribute("height", pictures[i].thumbHeight);
                     image.setAttribute("width", pictures[i].thumbWidth);
                     
+                    
                 imagelink.appendChild(image);
                 imagediv.appendChild(imagelink);
                 windowdiv.appendChild(imagediv);
                 
                 
-                
-                
-                
-                
-            };
-
-
-            // Sparar ner alla bredder och höjder på bilderna, jämför och sätter sedan den bredaste som alla andra bilders wrappers tar efter.
-            MYMAK.Imageviewer.prototype.adjustMaker = function(heightArray, widthArray){
-                
-                
-                var maxwidth = Math.max(widthArray);
-                var maxheight = Math.max(heightArray);
-                
+                console.log(imagediv)
                 console.log(maxheight)
                 console.log(maxwidth)
                 
+                imagediv.style.width = maxwidth+"px";
+                imagediv.style.height = maxheight+"px";
+            
+            };
+
+
+            // Steg 2. Sparar ner alla bredder och höjder på bilderna, jämför och sätter sedan den bredaste och högsta som alla andra bilders wrappers tar efter, skickar sedan vidare till imageMakern.
+            MYMAK.Imageviewer.prototype.adjustMaker = function(heightArray, widthArray, name, objects, pictures){
+                
+
+
+                var maxheight = Math.max.apply(Math, heightArray);
+                var maxwidth = Math.max.apply(Math, widthArray);
+
+
+                for (var i = 0; i < pictures.length; i += 1) {
+                    MYMAK.Imageviewer.prototype.pictureMaker(maxheight, maxwidth, name, objects, pictures, i);
+                }
+                    
 
             };
             
