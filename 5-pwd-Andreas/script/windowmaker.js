@@ -13,7 +13,11 @@ MYMAK.makewindow = function () {
     var height;
     MYMAK.postopcount = 0;
     MYMAK.posleftcount = 0;
+    MYMAK.bigimgpostop = 100, 
+    MYMAK.bigimgposleft = 300;
     MYMAK.zindex = 0;
+    MYMAK.bigimgn = 0;
+    
 
     
     // Skapandet av ett Memoryspel.

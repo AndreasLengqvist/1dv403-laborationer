@@ -101,8 +101,9 @@ var MYMAK = MYMAK || {};
 
             // Flyttar det fokuserade fönstret till toppen av alla andra.
             windowdiv.onclick = function() {
-                MYMAK.zindex += 1;
-                windowdiv.style.zIndex = MYMAK.zindex;
+                    MYMAK.zindex += 1;
+                    windowdiv.style.zIndex = MYMAK.zindex;
+                
             };
             
     };

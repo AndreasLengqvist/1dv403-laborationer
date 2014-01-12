@@ -92,20 +92,30 @@ var MYMAK = MYMAK || {};
                 contentdiv.appendChild(imagediv);
                 
                 
-                console.log(imagediv)
-                console.log(maxheight)
-                console.log(maxwidth)
-                
                 imagediv.style.width = maxwidth+"px";
                 imagediv.style.height = maxheight+"px";
                 
                 imagelink.onclick = function() {
 
-                    MYMAK.postopcount += 15;
-                    MYMAK.posleftcount += 15;
-
-                    var bigimage = new MYMAK.BigImage("Förstoring", MYMAK.postopcount, MYMAK.posleftcount);
+                MYMAK.bigimgn += 1;
+                MYMAK.bigimgposleft += 10;
+                MYMAK.bigimgpostop += 10;
+                
+                
+                    var bigimage = new MYMAK.Imageviewer("Förstoring"+MYMAK.bigimgn, "pics/dockimageicon.png", MYMAK.bigimgpostop, MYMAK.bigimgposleft);
                     bigimage.buildWindow();
+                    var bigimgdiv = document.querySelector("#Förstoring"+MYMAK.bigimgn);
+                    bigimgdiv.style.zIndex = "2147483647";
+                    bigimgdiv.className = "imagewrapper";
+                    
+                    var bigimg = document.createElement("img");
+            
+                    // Sätter bildens attribut.
+                    bigimg.setAttribute("src", pictures[i].URL);
+                    bigimg.setAttribute("height", pictures[i].Height);
+                    bigimg.setAttribute("width", pictures[i].Width);
+                    
+                    bigimgdiv.appendChild(bigimg);
                     
                 };            
             };
