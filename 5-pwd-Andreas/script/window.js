@@ -24,9 +24,12 @@ var MYMAK = MYMAK || {};
             var windowdiv = document.createElement("div");
             var headdiv = document.createElement("div");
             var statusdiv = document.createElement("div");
+            var contdiv = document.createElement("div");
             windowdiv.id = this.idname;
             windowdiv.className = "windowdiv2";
             windowdiv.style.zIndex = MYMAK.zindex;
+            contdiv.id = "content"+this.idname;
+            contdiv.className = "contentdiv";
             headdiv.className = "headdiv";
             headdiv.id = "headdiv"+this.idname;
             statusdiv.className = "statusdiv";
@@ -56,6 +59,7 @@ var MYMAK = MYMAK || {};
             headdiv.appendChild(headimg);
 
             windowdiv.appendChild(headdiv);
+            windowdiv.appendChild(contdiv);
             windowdiv.appendChild(statusdiv);
 
 
@@ -73,6 +77,9 @@ var MYMAK = MYMAK || {};
             windowdiv.style.left = this.posleftcount+"px";
             windowdiv.style.width = this.width+"px";
             windowdiv.style.height = this.height+"px";
+            contdiv.style.width = this.width+"px";
+            var contentheight = (this.height - 45);
+            contdiv.style.height = contentheight+"px";
 
             
             main.appendChild(windowdiv);

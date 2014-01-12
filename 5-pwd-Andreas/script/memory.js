@@ -24,7 +24,7 @@ var MYMAK = MYMAK || {};
     
         MYMAK.Memory.prototype.buildGame = function(){
             
-        var gamediv = document.querySelector("#"+this.idname);
+        var gamediv = document.querySelector("#content"+this.idname);
 
         var rows = 4;
 
@@ -72,7 +72,7 @@ var MYMAK = MYMAK || {};
                 }
             }
         };
-
+        
         
         
         // Spelar.

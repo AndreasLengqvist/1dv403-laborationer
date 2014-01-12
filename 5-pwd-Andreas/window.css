@@ -115,5 +115,20 @@ td {
 }
 
 .imagewrapper {
+    float:left;
     background:black;
+    padding:10px;
+    margin:5px;
+    margin-left:15px;
+    border-radius:5px;
+}
+
+.contentdiv {
+    overflow:scroll;
+    border-bottom-left-radius:7px;
+    border-bottom-right-radius:7px;
+}
+
+.loader {
+    margin-top:70px;
 }

@@ -23,11 +23,22 @@ var MYMAK = MYMAK || {};
             var ajaxobj = [];              // Bildarray där bilderna (eller egentligen hela objektet sparas ner.)
             
             var that = this;
+            
+            var contentdiv = document.querySelector("#content"+that.idname);
+            var loader = document.createElement("img");
+            loader.className = "loader";
+            
+            loader.setAttribute("src", "pics/loader.gif");
+
+            contentdiv.appendChild(loader);
+
+            
+            
             xhr.onreadystatechange = function(){
                 
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     ajaxobj = JSON.parse(xhr.responseText);
-                    // Här ska loadern stoppas!
+                    loader.remove();
                     MYMAK.Imageviewer.prototype.objectSplitter(that.idname, ajaxobj);
                 }
             };
@@ -61,7 +72,7 @@ var MYMAK = MYMAK || {};
             // Steg 3. Bildredigerarfunktion som redigerar och visar upp bilden i applikationen. (Ligger i innersluten i loopen från funktionen objectsSplitter)
             MYMAK.Imageviewer.prototype.pictureMaker = function(maxheight, maxwidth, name, objects, pictures, i){
 
-                var windowdiv = document.querySelector("#"+name);
+                var contentdiv = document.querySelector("#content"+name);
                 var imagediv = document.createElement("div");
                 var imagelink = document.createElement("a");
                 var image = document.createElement("img");
@@ -78,7 +89,7 @@ var MYMAK = MYMAK || {};
                     
                 imagelink.appendChild(image);
                 imagediv.appendChild(imagelink);
-                windowdiv.appendChild(imagediv);
+                contentdiv.appendChild(imagediv);
                 
                 
                 console.log(imagediv)
@@ -87,7 +98,16 @@ var MYMAK = MYMAK || {};
                 
                 imagediv.style.width = maxwidth+"px";
                 imagediv.style.height = maxheight+"px";
-            
+                
+                imagelink.onclick = function() {
+
+                    MYMAK.postopcount += 15;
+                    MYMAK.posleftcount += 15;
+
+                    var bigimage = new MYMAK.BigImage("Förstoring", MYMAK.postopcount, MYMAK.posleftcount);
+                    bigimage.buildWindow();
+                    
+                };            
             };
 
 

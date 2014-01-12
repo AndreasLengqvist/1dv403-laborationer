@@ -37,7 +37,7 @@ MYMAK.makewindow = function () {
     document.querySelector("#imagelink").onclick = function() {
         
         var imageviewer;
-        width = 200;
+        width = 250;
         height = 250;
         imn += 1;
         MYMAK.postopcount += 15;
