@@ -132,3 +132,30 @@ td {
 .loader {
     margin-top:70px;
 }
+
+.rssFeed {
+    font-family:courier;
+}
+
+.rssFeed img {
+    margin:20px;
+}
+
+.rss_title{
+    font-size:1.5em;
+    font-weight:bolder;
+    margin-bottom:5px;
+    margin-top:15px;
+}
+
+p {
+    text-align:left;
+    font-size:0.8em;
+    margin:10px;
+}
+
+a {
+    font-size:0.6em;
+    max-width:250px;
+    color:gray;
+}

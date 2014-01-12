@@ -58,8 +58,8 @@ MYMAK.makewindow = function () {
     document.querySelector("#rsslink").onclick = function() {
         
         var rssfeed;
-        width = 180;
-        height = 350;
+        width = 450;
+        height = 250;
         rn += 1;
         MYMAK.postopcount += 15;
         MYMAK.posleftcount += 15;
@@ -67,6 +67,7 @@ MYMAK.makewindow = function () {
         rssfeed = new MYMAK.Rssfeed("RSSFeed"+[rn], "pics/dockrssicon1.png", MYMAK.postopcount, MYMAK.posleftcount, width, height);
         
         rssfeed.buildWindow();
+        rssfeed.RSSCon();
     };    
 };
 

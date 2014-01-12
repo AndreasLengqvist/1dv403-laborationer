@@ -44,7 +44,6 @@ var MYMAK = MYMAK || {};
             };
                 
                 xhr.open("get", "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/" , true);
-                
                 xhr.send(null);
             };
             
@@ -79,6 +78,7 @@ var MYMAK = MYMAK || {};
                 
                 imagediv.className = "imagewrapper";
                 imagelink.className = "imagelink";
+                image.className = "galleryimg";
             
                 
                     // Sätter tumnagelbildsattributen.
