@@ -48,7 +48,14 @@ var MYMAK = MYMAK || {};
                 
                 xhr.open("get", "http://homepage.lnu.se/staff/tstjo/labbyServer/rssproxy/?url="+escape("http://www.moviezine.se/rss/recensioner") , true);
                 xhr.send(null);
+                
+                MYMAK.intervalID = setInterval(function(){
+                    
+                    MYMAK.Rssfeed.prototype.updateRSS(xhr, loader, that, contentdiv, rssdata);
+                
+                },5000);
             };
+            
             
             
             // Funktion som skriver ut den hämtade datan till en RSS-Feed som läggs i contentdiven.
@@ -56,9 +63,6 @@ var MYMAK = MYMAK || {};
 
                 var contentdiv = document.querySelector("#content"+name);
                 contentdiv.innerHTML = rssdata;
-                
-                
-                
             }
             
             // XHR-requestfunktion.
@@ -69,4 +73,24 @@ var MYMAK = MYMAK || {};
                     
                     
                 return xhr;
+            }
+            
+            
+            MYMAK.Rssfeed.prototype.updateRSS = function(xhr, loader, that, contentdiv, rssdata){
+                
+                contentdiv.innerHTML = "";
+                contentdiv.appendChild(loader);
+                
+                xhr.open("get", "http://homepage.lnu.se/staff/tstjo/labbyServer/rssproxy/?url="+escape("http://www.moviezine.se/rss/recensioner") , true);
+                xhr.send(null);
+
+                xhr.onreadystatechange = function(){
+                
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        rssdata = xhr.responseText;
+                        loader.remove();
+                        MYMAK.Rssfeed.prototype.rssMaker(that.idname, rssdata);
+                    }
+                };
+                
             }

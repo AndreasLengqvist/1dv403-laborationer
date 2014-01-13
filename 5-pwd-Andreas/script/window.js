@@ -94,7 +94,7 @@ var MYMAK = MYMAK || {};
 
             var close = document.querySelector("#headclose"+that.idname);
             close.onclick = function () {
-                
+            clearInterval(MYMAK.intervalID);
             document.querySelector("#"+that.idname).remove();
             };
             

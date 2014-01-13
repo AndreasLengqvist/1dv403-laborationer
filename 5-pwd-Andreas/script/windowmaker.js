@@ -63,11 +63,12 @@ MYMAK.makewindow = function () {
         rn += 1;
         MYMAK.postopcount += 15;
         MYMAK.posleftcount += 15;
-        
+        var update = false;
+
         rssfeed = new MYMAK.Rssfeed("RSSFeed"+[rn], "pics/dockrssicon1.png", MYMAK.postopcount, MYMAK.posleftcount, width, height);
         
         rssfeed.buildWindow();
-        rssfeed.RSSCon();
+        rssfeed.RSSCon(update);
     };    
 };
 
