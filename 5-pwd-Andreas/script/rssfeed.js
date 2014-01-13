@@ -49,7 +49,8 @@ var MYMAK = MYMAK || {};
                 xhr.open("get", "http://homepage.lnu.se/staff/tstjo/labbyServer/rssproxy/?url="+escape("http://www.moviezine.se/rss/recensioner") , true);
                 xhr.send(null);
                 
-                MYMAK.intervalID = setInterval(function(){
+                // Uppdateringstimer.
+                that.intervalID = setInterval(function(){
                     
                     MYMAK.Rssfeed.prototype.updateRSS(xhr, loader, that, contentdiv, rssdata);
                 
