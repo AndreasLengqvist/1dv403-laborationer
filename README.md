@@ -1,7 +1,7 @@
 #Webbteknik 1 - HT2013
 
-Kursen var min första kurs inom programmering och introduktion till programmet Utvecklare av digitala tjänster på Linnéuniversitetet. <br>
+Kursen var min andra kurs och här fick jag lära mig om Javascript och att utveckla klientbaserade webbapplikationer.
 
-Programmeringsspråk: <b>HTML/CSS</b><br>
-Betygsskala: <b>G/IG</b><br>
-Slutbetyg: <b>G</b>
+Programmeringsspråk: <b>Javascript</b><br>
+Betygsskala: <b>3/4/5</b><br>
+Slutbetyg: <b>4</b>
