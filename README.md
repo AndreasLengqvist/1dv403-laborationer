@@ -1,4 +1,7 @@
-1dv403-laborationer
-===================
+#Webbteknik 1 - HT2013
 
-Laborationer i kursen genomförs i en fork av detta repro.
+Kursen var min första kurs inom programmering och introduktion till programmet Utvecklare av digitala tjänster på Linnéuniversitetet. <br>
+
+Programmeringsspråk: <b>HTML/CSS</b><br>
+Betygsskala: <b>G/IG</b><br>
+Slutbetyg: <b>G</b>
