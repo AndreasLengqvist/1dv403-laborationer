@@ -1,6 +1,6 @@
 #Webbteknik 1 - HT2013
 
-Kurs som behandlar Javascript från grunden:
+Klientsideutveckling med JavaScript:
 - arbeta med programmeringsspråket Javascript
 - skapa dynamiska webbsidor baserade på Javascript i webbklienten.
 - validera data mot reguljära uttryck innan datan skickas från webbklienten.
